@@ -2,10 +2,12 @@
 
 Build a modern Go BBS door using godoors, grounded in the supplied original 3.6 binaries, documentation, and repeatable DOS experiments.
 
+<a id="current-work"></a>
+
 ## Current implementation and next work — checked 2026-11-11
 
 This section is the current planning baseline, checked against merged `main`
-through `b3061218` (including merged arithmetic PRs #126–132 and merged maintenance PRs #88, #90–94 and #97–113, cursor fix #95 and smoke evidence #96), including PRs [#73](https://github.com/robbiew/yankeetrader/pull/73)
+through `8e711469` (including merged numeric PRs #117–137 and merged maintenance PRs #88, #90–94 and #97–116, cursor fix #95 and smoke evidence #96), including PRs [#73](https://github.com/robbiew/yankeetrader/pull/73)
 (port rules/pricing), [#74](https://github.com/robbiew/yankeetrader/pull/74)
 (warp rules), [#75](https://github.com/robbiew/yankeetrader/pull/75)
 (raw RNG recovery), and [#76](https://github.com/robbiew/yankeetrader/pull/76)
@@ -19,13 +21,53 @@ through `b3061218` (including merged arithmetic PRs #126–132 and merged mainte
 (full QB acceptance) and [#84](https://github.com/robbiew/yankeetrader/pull/84)
 (January 10 source-date admission). The playable integration adds typed
 recipes, CLI admission and both reset paths in the current source build; published
-v0.1.0 packages predate that integration. Release **v0.1.0 is published**. The playable QB profile uses documented modern adaptations rather than exact
-DOS maintenance. Application version is 0.1.0 and save format is **35**. See the
+v0.1.0 packages predate that integration. The published Linux x86-64 tester
+[v0.1.1-sysop.1](https://github.com/robbiew/yankeetrader/releases/tag/v0.1.1-sysop.1)
+includes the playable profile and Door32 negative-handle fix; it supplies no
+Windows x86-64 or Linux ARM64 package. Those platforms need a current build for QB
+generation. The playable profile uses documented modern adaptations rather than
+exact DOS maintenance. Source builds default to version 0.1.0; save format is **35**. See the
 [playable feature overview](../README.md#playable-feature-overview),
 [save compatibility](../README.md#storage-and-recovery) and
 [validation evidence](../evidence/VALIDATION.md) for operating details and limits.
 
-### Latest bounded departure replay
+### Current numeric work — checked 2026-11-11
+
+PRs #117–137 are merged; direct DOUBLE addition is complete. The following
+inline /86 supplement reuses that implementation and retained source.
+The exported APIs, native fixtures, CI commands and retained reports agree:
+
+| Area | Current state; do not repeat |
+| --- | --- |
+| Raw RNG and initializer | Recovered core/argumented SINGLE RND, pure Go generator, twenty native goldens, safe projection, playable recipes and both reset paths are implemented. The multi-day/default-300-port campaign is complete within its documented session/store scope. |
+| SINGLE integer operations | INT/FIX and default/mode-4 signed16 conversion are qualified; signed32/LONG is excluded by the QB3 language audit. |
+| DOUBLE integer operations | INT/FIX and default/mode-4 signed16 conversion are already qualified. Do not schedule those completed conversions again. |
+| SINGLE binary arithmetic | Direct and bounded inline addition, subtraction, multiplication and division are complete, including declared overflow/division-zero contexts. See the [addition](yt-mbf-inline-add/RECOVERY.md), [subtraction](yt-mbf-inline-sub/RECOVERY.md), [multiplication](yt-mbf-inline-multiply/RECOVERY.md) and [division](yt-mbf-inline-divide/RECOVERY.md) supplements. |
+| DOUBLE binary arithmetic | Direct addition /80, /82 and /84 and bounded inline /86 are qualified by AddDouble/AddDoubleWithFAC, the shared offset helper and native fixtures. DOUBLE subtraction, multiplication and division remain separate. |
+
+[Direct raw-DOUBLE addition](yt-mbf-double-add/RECOVERY.md) is now implemented
+and qualified by 145 first-attempt controls, preserving full 56-bit precision,
+directional zero selection, seven-byte FAC residue and the native gap shortcut.
+The original-byte inventory matches fourteen direct caller slots and records
+four excluded inline /86 sites separately. Source entry, ABI and error evidence
+were reused; only 352 missing kernel bytes were queried.
+
+[Bounded inline DOUBLE addition /86](yt-mbf-inline-add-double/RECOVERY.md) now
+composes the existing resolver and direct primitive, with no new source query.
+All 113 first attempts completed: 19 address-only controls, 80 numeric returns
+and 14 exact Overflows. Separate eight-byte protocols cover both source selectors,
+actual caller headers, safe reads, seven-byte FAC residue and declared padded
+error frames; wrapped offsets remain resolver-only. Eighteen verifier tests,
+portable Go traces and CI checks accompany the supplement.
+
+**Next bounded task: direct DOUBLE subtraction**, beginning with an audit of
+retained source, caller inventory and existing controls. Do not repeat completed
+SINGLE arithmetic, DOUBLE INT/FIX/signed16 conversion, direct/inline DOUBLE
+addition or generator acceptance. General error/unwind behavior, production
+replay integration, DOS save interoperability and native Windows/live-BBS
+acceptance remain separate.
+
+### Completed bounded departure/stock replay
 
 The [departed-garrison stock matrix](yt-maint/DEPARTED_STOCK_CONTROLS.md) retains
 48 complete DOS runs / 288 files, six-mode equal. Four/eight-second fixtures
@@ -301,13 +343,13 @@ remain separate.
 | Exact graph/port replay / PR #76 | Six original clock worlds match all warp cells, complete port records and sector links; twelve independent native phase states. |
 | Full QB world acceptance | Controlled UTC multi-day production session/store campaign, earned 300-port Genesis, reconnect/old-login guards and source-layout reset; independent retained-evidence/corruption checks. [Boundaries and reproduction](../evidence/QB_FULL_WORLD_CAMPAIGN.md). |
 | Playable QB profile / save 35 / PR #82 | Typed source recipe and fingerprint, strict initialization CLI, recipe-bound Genesis, archive-first admin reset and repeat-layout policy. Existing worlds upgrade without rerolling; no DOS save interoperability. |
-| Pure Go generator and safe projection / PRs #80–81 | Portable ten-control goldens, bounded source generation and unpublished safe projection/admission. |
+| Pure Go generator and safe projection / PRs #80–81 | Portable twenty-control goldens, bounded source generation and unpublished safe projection/admission. |
 | January 10 admission parity | Ten additional original date controls verify port-date FAC residues across 2026–2028; twenty portable whole-world goldens pass. The source generator and playable recipe accept January 10 without changing earlier hashes or schema 35. [Evidence](yt-initializer-replay/JANUARY10.md). |
-| Complete initializer replay / PR #77 | Ten bounded worlds match all 4,151 records, including FIELD/FAC residue rules and fresh path/date controls. Research only; save 34 unchanged. |
+| Complete initializer replay / PR #77 | Initial ten bounded worlds match all 4,151 records, including FIELD/FAC residue rules and fresh path/date controls. Research only; save 34 unchanged. |
 
 ### Ordered genuine backlog
 
-1. **Complete generator stream and numeric parity beyond the verified core.**
+1. **Remaining numeric-runtime and maintenance parity beyond the verified core.**
    Raw `RANDOMIZE -TIMER`, the 24-bit RND recurrence, preserved low seed byte and
    midnight zero residue are now recovered, implemented as a shared primitive
    and checked against 4096 native state/value pairs. A research model exactly
@@ -426,8 +468,14 @@ remain separate.
    [Direct addition entry state](yt-mbf-add-entries/RECOVERY.md) now qualifies
    memory-to-memory 7f and memory-to-FAC 83: 184 controls / 176 results and eight
    native errors, explicit prior-FAC handling, twelve verifier tests and a shared
-   arithmetic API. Inline address-resolving 85 and other arithmetic remain separate.
-   Audit remaining branches before choosing new controls; do not repeat this work.
+   arithmetic API. [Inline addition /85](yt-mbf-inline-add/RECOVERY.md),
+   [direct/inline subtraction](yt-mbf-inline-sub/RECOVERY.md),
+   [direct/inline multiplication](yt-mbf-inline-multiply/RECOVERY.md) and
+   [direct/inline division](yt-mbf-inline-divide/RECOVERY.md) are also complete
+   within their declared frames/error contexts (PRs #128–135). The next selected
+   numeric gap is inline DOUBLE addition /86; the [direct DOUBLE primitive](yt-mbf-double-add/RECOVERY.md)
+   is now qualified. Other DOUBLE binary arithmetic remains separate.
+   Audit retained evidence before choosing new controls; do not repeat this work.
    General MBF,
    arbitrary inputs and unmeasured dynamic paths remain separate research.
    Do not repeat the established
@@ -2188,7 +2236,51 @@ and exact fatal frames. Added the isolated Go division APIs with distinct errors
 portable traces, twelve corruption tests and CI steps. A bounded original-byte
 inventory records 8 /87 and 16 /89 callers, with no /8b or inline /8d listing sites.
 Generator goldens, source fingerprints, gameplay, save 35 and sysop policy stay
-unchanged. Next: inspect existing inline /8d entry/address evidence before adding
-missing bounded controls; do not repeat the completed direct arithmetic captures.
+unchanged. Bounded inline /8d follows below; do not repeat the completed direct
+arithmetic captures.
 General unwind, hooks/RESUME, DOUBLE division and complete maintenance remain
 separate. [Evidence and boundaries](yt-mbf-divide/RECOVERY.md).
+
+
+### Bounded inline SINGLE division (2026-11-11)
+
+Merged #134 after two current-head green observations and immediate final
+review/CI recheck, protected merge and verified ancestry. Audited retained source,
+plan/README and open work before starting from merged main. Existing entry,
+resolver, quotient and fatal-error evidence completely covered inline /8d;
+no new source query or arithmetic implementation was needed. Added 93 immutable
+first-attempt controls: 15 resolver-only frames, 54 numeric returns, 10 exact
+Overflows and 14 exact Division by zero outcomes. Separate portable profiles and
+seventeen corruption tests check the composed Go resolver/division primitive,
+ordered operands, right-FAC zero residue, guard/sticky/range behavior and declared
+baseline/padded error frames. The static maintenance listing has no inline /8d
+sites; no synthetic controls are represented as normal callers. Extended shared
+validators with closed division choices while preserving earlier fixture schemas,
+updated resolver GoDoc and CI, and retained all original observation hashes.
+Gameplay, source fingerprints, save 35 and sysop policy are unchanged. Next:
+reconcile remaining arithmetic/conversion gaps and callers against recovered
+evidence and open work before selecting another slice. Do not repeat completed
+bounded direct/inline SINGLE arithmetic. General unwind, hooks/RESUME, arbitrary
+frames, DOUBLE arithmetic, full maintenance and live acceptance stay separate.
+[Evidence and boundaries](yt-mbf-inline-divide/RECOVERY.md).
+
+
+### Direct raw-DOUBLE addition (2026-11-11)
+
+Merged #136 after current-head green observations and final full review/CI
+rechecks with expected-head protection; verified ancestry before starting from
+main. Audited existing APIs/fixtures, retained source and open PRs first. Reused
+the 90-byte historical DOUBLE entry/copy/guard packet, dispatch, ABI and error
+source; queried only the missing 352-byte kernel tail. All 145 first attempts
+completed: 136 numeric returns and nine exact Overflows over direct /80, /82 and
+/84 entry forms. Added isolated AddDouble/AddDoubleWithFAC with bounded 112-bit
+integer alignment, all 56 significand bits, directional raw zeros, seven-byte
+prior-FAC residue, native gap shortcut and even rounding. Independent rational
+verification, full portable Go frames, sixteen corruption tests, CI and report
+updates preserve all original observations. Fourteen original-byte direct sites
+and four excluded inline /86 sites are inventoried. Existing numeric APIs,
+gameplay, fingerprints, save 35 and sysop policy are unchanged. Next: audit
+retained /86 caller/address evidence before bounded inline qualification; do not
+repeat this direct capture or completed integer conversions. Other DOUBLE
+operators, general unwind, full maintenance and live acceptance remain separate.
+[Evidence and boundaries](yt-mbf-double-add/RECOVERY.md).

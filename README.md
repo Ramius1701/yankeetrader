@@ -21,7 +21,7 @@ details and limitations.
 | Build and test | [Build and validate](#build-and-validate) |
 | Back up, export, restore or reset a season | [Season administration](#season-administration), [Storage and recovery](#storage-and-recovery), and the [sysop guide](docs/SYSOP.md) |
 | Read detailed game rules | [Planet management](#planet-management), [Teams](#teams), [Combat preparation](#combat-preparation), and [plasma](#bounded-plasma-launching) |
-| Find the next unfinished task | [Current reconstruction plan](research/RECONSTRUCTION_PLAN.md#current-implementation-and-next-work--checked-2026-11-07) — verified implementation inventory and remaining work; older milestones are historical |
+| Find the next unfinished task | [Current reconstruction plan](research/RECONSTRUCTION_PLAN.md#current-work) — verified implementation inventory and remaining work; older milestones are historical |
 | Review the reconstruction | [History](#a-little-history), [screenshots](#screenshots), [research](research/) and [validation evidence](evidence/) |
 
 ## Screenshots
@@ -51,6 +51,12 @@ Click any screenshot to view it at full size.
 Release packages provide Linux x86-64/ARM64 tarballs and a Windows x86-64 ZIP,
 including a standalone executable, [sysop cheat sheet](docs/SYSOP_CHEAT_SHEET.md),
 full save/restore guidance, credits, third-party notices and build provenance.
+The published [v0.1.1-sysop.1 tester build](https://github.com/robbiew/yankeetrader/releases/tag/v0.1.1-sysop.1)
+is Linux x86-64 only and includes playable `qb36-v1` plus the Door32 negative-handle
+fix. The Windows x86-64 and Linux ARM64 packages from v0.1.0 predate that profile;
+use a current source build for those platforms. Native Windows/live-BBS acceptance
+remains pending.
+
 Tagged `vX.Y.Z` builds create a **draft** [GitHub Release](https://github.com/robbiew/yankeetrader/releases)
 with SHA-256 checksums; a maintainer reviews and publishes it. Archive verification
 rejects Windows separators/drive syntax and noncanonical member paths on every host. Existing data is
@@ -75,8 +81,8 @@ in-memory source bytes, preserving the original defects for comparison. Fresh
 [January 9/10/11 controls](research/yt-initializer-replay/JANUARY10.md) across
 2026–2028 verify the class-dependent January 10 zero residue; that date is now
 admitted without changing any previously supported source fingerprints.
-**Playable QB generation is available in this source build** (the published
-v0.1.0 packages predate it). To initialize a separate
+**Playable QB generation is available in this source build and the Linux x86-64
+v0.1.1-sysop.1 tester build** (the v0.1.0 packages predate it). To initialize a separate
 world, use `-init -generation-profile qb36-v1 -qb-state 0xc805 -qb-date 2027-01-01`.
 The saved typed recipe records the profile, raw 24-bit post-RANDOMIZE state,
 explicit source date and SHA-256 of the complete original source candidate.
@@ -2187,4 +2193,56 @@ A static inventory matches 24 direct maintenance sites to original bytes.
 Portable Go traces, twelve corruption/verifier tests and CI checks accompany the
 isolated APIs. Gameplay, source fingerprints, save 35 and sysop behavior are
 unchanged. Inline /8d, arbitrary error/unwind contexts, DOUBLE arithmetic and
-complete maintenance remain separate; audit existing inline evidence next.
+complete maintenance remain separate. The following supplement qualifies bounded inline /8d.
+
+
+[Inline SINGLE division](research/yt-mbf-inline-divide/RECOVERY.md) now qualifies
+bounded INT3F/8d execution by composing the existing resolver with
+`DivideSingleWithFAC(left,FAC,FAC)`. No new source query or arithmetic algorithm
+was needed. All 93 first attempts completed: 15 resolver-only controls, 54 numeric
+returns, 10 exact Overflow errors and 14 exact Division by zero errors. The
+separate protocols preserve right-FAC zero residue, ordered operands, safe/wrapped
+addressing boundaries, consumed-selector error addresses and declared padded
+frames. The bounded maintenance listing has no inline /8d callers; these are
+synthetic controls. Seventeen verifier tests, portable Go traces, CI and plan/report
+updates accompany the shared resolver documentation. Gameplay, source fingerprints,
+save 35 and sysop behavior are unchanged. General unwind, hooks/RESUME, arbitrary
+frames, DOUBLE arithmetic, complete maintenance and live acceptance remain
+unqualified. The [reconciled current plan](research/RECONSTRUCTION_PLAN.md#current-work)
+marks these SINGLE arithmetic slices and existing DOUBLE INT/FIX/signed16
+conversions complete. Direct raw-DOUBLE addition is qualified by the following
+supplement; bounded inline /86 is qualified by its own supplement below. Other
+DOUBLE binary arithmetic remains separate.
+
+
+[Direct raw-DOUBLE addition](research/yt-mbf-double-add/RECOVERY.md) now qualifies
+INT3F/80 memory plus memory, /82 FAC plus memory and /84 memory plus FAC.
+`AddDouble` and `AddDoubleWithFAC` preserve all 56 significand bits, directional
+zero aliases, the native exponent-gap cutoff and seven prior-FAC residue bytes
+on cancellation/underflow. Bounded integer alignment avoids float64 demotion;
+Overflow returns a rejected result without claiming native post-error state.
+Existing entry/ABI/error observations were reused; only the missing 352-byte
+kernel tail was queried. All 145 first attempts completed: 136 numeric returns
+and nine exact Overflows. Sixteen verifier tests, complete portable Go traces,
+CI and plan/report updates accompany the APIs. The original-byte inventory has
+14 direct callers and four separately excluded inline /86 sites. Gameplay,
+source fingerprints, save 35 and sysop behavior are unchanged. The following
+supplement qualifies bounded inline /86; other DOUBLE arithmetic and general
+unwind remain separate.
+
+
+[Inline DOUBLE addition](research/yt-mbf-inline-add-double/RECOVERY.md) now
+qualifies bounded INT3F/86 by composing the shared offset resolver with
+`AddDoubleWithFAC(left,FAC,FAC)`. All entry/kernel/caller source was reused; no
+new source query or arithmetic algorithm was needed. The four retained source
+caller sites use selectors 80/8a; new address controls also exercise their actual
+header words. All 113 first attempts completed: 19 resolver-only controls,
+80 numeric returns and 14 exact Overflows. Distinct eight-byte protocols preserve
+seven-byte FAC residue, low significand bits, unchanged operand/poison blocks
+and consumed-selector error addresses in declared baseline/padded frames.
+Wrapped offsets remain address-only; complete reads use safe eight-byte spans.
+Eighteen verifier tests, portable Go traces, CI and plan/report updates accompany
+the shared resolver documentation. Gameplay, source fingerprints, save 35 and
+sysop behavior are unchanged. Next: audit retained direct DOUBLE subtraction
+evidence/callers before choosing missing controls. Other DOUBLE arithmetic,
+general unwind, complete maintenance and live acceptance remain separate.
