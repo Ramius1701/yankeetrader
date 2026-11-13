@@ -2211,8 +2211,7 @@ frames, DOUBLE arithmetic, complete maintenance and live acceptance remain
 unqualified. The [reconciled current plan](research/RECONSTRUCTION_PLAN.md#current-work)
 marks these SINGLE arithmetic slices and existing DOUBLE INT/FIX/signed16
 conversions complete. Direct raw-DOUBLE addition is qualified by the following
-supplement; bounded inline /86 is qualified by its own supplement below. Other
-DOUBLE binary arithmetic remains separate.
+supplement. Bounded inline /86 is merged in PR #138; do not repeat it. Direct DOUBLE subtraction is qualified by its own supplement below.
 
 
 [Direct raw-DOUBLE addition](research/yt-mbf-double-add/RECOVERY.md) now qualifies
@@ -2226,9 +2225,8 @@ kernel tail was queried. All 145 first attempts completed: 136 numeric returns
 and nine exact Overflows. Sixteen verifier tests, complete portable Go traces,
 CI and plan/report updates accompany the APIs. The original-byte inventory has
 14 direct callers and four separately excluded inline /86 sites. Gameplay,
-source fingerprints, save 35 and sysop behavior are unchanged. The following
-supplement qualifies bounded inline /86; other DOUBLE arithmetic and general
-unwind remain separate.
+source fingerprints, save 35 and sysop behavior are unchanged. PR #138 merged bounded inline /86. Direct subtraction follows below; other DOUBLE
+arithmetic and general unwind remain separate.
 
 
 [Inline DOUBLE addition](research/yt-mbf-inline-add-double/RECOVERY.md) now
@@ -2243,6 +2241,132 @@ and consumed-selector error addresses in declared baseline/padded frames.
 Wrapped offsets remain address-only; complete reads use safe eight-byte spans.
 Eighteen verifier tests, portable Go traces, CI and plan/report updates accompany
 the shared resolver documentation. Gameplay, source fingerprints, save 35 and
-sysop behavior are unchanged. Next: audit retained direct DOUBLE subtraction
-evidence/callers before choosing missing controls. Other DOUBLE arithmetic,
+sysop behavior are unchanged. Direct subtraction is qualified below. Other DOUBLE arithmetic,
 general unwind, complete maintenance and live acceptance remain separate.
+
+
+[Direct raw-DOUBLE subtraction](research/yt-mbf-subtract-double/RECOVERY.md) now
+qualifies INT3F/98 memory minus memory, /9a FAC minus memory and /9c memory minus
+FAC. `SubtractDouble` and `SubtractDoubleWithFAC` reuse addition after the native
+register-only right sign flip, retaining full precision, zero aliases and
+original prior-FAC residue. All source was reused with no new query. All 148
+first attempts completed: 139 numeric returns and nine exact Overflows. The
+bounded original-byte inventory matches 21 direct sites and no inline /9e sites.
+Seventeen verifier tests, complete portable Go traces, CI and README/plan/report
+updates accompany the isolated APIs. PR #138 merged the separate inline-addition work. Gameplay, source fingerprints, save 35 and sysop behavior are unchanged.
+Bounded inline /9e is qualified by the following supplement.
+Multiplication/division, general unwind, complete maintenance
+and native BBS/Windows acceptance remain separate.
+
+
+[Inline DOUBLE subtraction](research/yt-mbf-inline-subtract-double/RECOVERY.md)
+now qualifies bounded INT3F/9e by composing the shared offset resolver with
+`SubtractDoubleWithFAC(left,FAC,FAC)`. Existing entry/kernel/frame/error evidence
+was reused without a source query or new algorithm. The bounded maintenance
+listing has no inline /9e callers; the new controls are synthetic. All 117 first
+attempts completed: 15 address-only controls, 88 numeric returns and 14 exact
+Overflows. Distinct eight-byte traces preserve ordered operands, register-only
+right negation, seven-byte FAC residue, safe-read boundaries and declared padded
+error continuations. Nineteen verifier tests, portable Go traces, CI and plan/report
+updates accompany the shared helper documentation. Gameplay, source fingerprints,
+save 35 and sysop behavior are unchanged. Direct DOUBLE multiplication is
+qualified by the following supplement. General unwind,
+other DOUBLE arithmetic, full maintenance and live acceptance remain separate.
+
+
+[Direct raw-DOUBLE multiplication](research/yt-mbf-multiply-double/RECOVERY.md)
+now qualifies INT3F/90 memory times memory, /92 FAC times memory and /94 memory
+times FAC. `MultiplyDouble` and `MultiplyDoubleWithFAC` retain exact 112-bit
+products and round to 56 bits without float64 demotion, preserving original FAC
+residue on zero/pre-round underflow. Existing ABI/rounding/error evidence was
+reused; only 400 missing wrapper/helper bytes were queried. All 118 first attempts
+completed: 111 numeric returns and seven exact Overflows. Five original /92 caller
+slots match archived bytes; inline /96 has no matches in the bounded listing and
+remains separate. Eighteen verifier tests, full portable Go traces, CI and
+README/plan/report updates accompany the APIs. Gameplay, source fingerprints,
+save 35 and sysop behavior are unchanged. Bounded inline /96 is qualified
+by the following supplement. DOUBLE division,
+general unwind, complete maintenance and native BBS/Windows acceptance remain separate.
+
+
+[Inline DOUBLE multiplication](research/yt-mbf-inline-multiply-double/RECOVERY.md)
+now qualifies bounded INT3F/96 by composing the shared resolver with
+`MultiplyDoubleWithFAC(left,FAC,FAC)`. All source was already retained; no new
+query or arithmetic algorithm was needed. The bounded listing has no inline /96
+callers, so controls are explicitly synthetic. All 153 first attempts completed:
+15 address-only controls, 128 numeric returns and ten exact Overflows. Distinct
+eight-byte traces retain full-product ties/sticky information, seven-byte FAC
+residue, safe-read boundaries and declared padded error continuations. Nineteen
+verifier tests, portable Go traces, CI and README/plan/report updates accompany
+the shared helper documentation. Gameplay, source fingerprints, save 35 and sysop
+behavior are unchanged. Direct DOUBLE division is qualified by the following
+supplement. General unwind, complete maintenance,
+DOS save interoperability and native BBS/Windows acceptance remain separate.
+
+
+[Direct raw-DOUBLE division](research/yt-mbf-divide-double/RECOVERY.md) now
+qualifies INT3F/88 memory divided by memory, /8a FAC divided by memory and /8c
+memory divided by FAC. `DivideDouble` and `DivideDoubleWithFAC` retain exact
+56-bit quotients/remainders and distinct Overflow/Division-by-zero errors, with
+zero-divisor precedence even for 0/0. Early underflow retains original FAC residue;
+late normalization underflow instead retains source-qualified shifted divisor
+residue. The original boundary finding is preserved alongside forty separate
+counter-controls. Existing ABI/rounding/error evidence was reused; only 259
+missing division bytes were queried. All 178 first attempts completed: 150 numeric
+returns, 12 exact Overflows and 16 exact Division-by-zero diagnostics. Nine /8a
+caller slots match archived bytes. Twenty verifier tests, portable Go traces,
+CI and README/plan/report updates accompany the APIs. Gameplay, source fingerprints,
+save 35 and sysop behavior are unchanged. Bounded inline /8e is qualified
+by its separate supplement below. General unwind, full
+maintenance, DOS save interoperability and native BBS/Windows acceptance remain separate.
+
+
+[Inline DOUBLE division](research/yt-mbf-inline-divide-double/RECOVERY.md) now
+qualifies bounded INT3F/8e by composing the shared resolver with
+`DivideDoubleWithFAC(left,FAC,FAC)`. Existing source was reused without a new
+query or algorithm. Controls are synthetic: the bounded listing has no /8e
+callers. All 163 first attempts completed: 15 address-only controls, 120 numeric
+returns, ten Overflows and 18 Division-by-zero diagnostics. Distinct eight-byte
+traces preserve operand order, full-width rounding, zero-divisor precedence and
+both original-FAC and shifted-divisor underflow residues, including declared
+padded frames. Twenty verifier tests, portable Go traces, CI and plan/report
+updates accompany the shared helper documentation. PR #144's direct division dependency is merged; this slice now targets main.
+Gameplay, source fingerprints, save 35 and sysop behavior are unchanged. After this inline milestone merges, audit remaining runtime/maintenance gaps rather than repeating
+completed arithmetic. General unwind, complete maintenance, DOS save interoperability
+and native BBS/Windows acceptance remain separate.
+
+### Direct raw SINGLE comparisons
+
+[Comparison flag evidence](research/yt-mbf-single-compare/RECOVERY.md) now
+qualifies `qbmbf.CompareSingle`, its five defined CPU flags and sixteen Jcc
+conditions with 216 first-attempt native controls across /9f, /a1 and /a3.
+All source/ABI evidence was reused; 203 direct maintenance sites match original
+bytes. Signed CPU jumps are not numeric MBF ordering, and undefined AF is not
+predicted. Inputs/FAC/RNG remain unchanged. Inline and DOUBLE comparisons and
+production replay integration remain separate; gameplay and save format 35 are
+unchanged. Native provenance/corruption checks and portable Go tests run in CI.
+
+### Direct raw DOUBLE comparisons
+
+[DOUBLE comparison flag evidence](research/yt-mbf-double-compare/RECOVERY.md)
+now qualifies `qbmbf.CompareDouble` across /a0, /a2 and /a4 with 486 native
+controls. All retained source and ABI evidence was reused; thirty direct caller
+sites match original bytes, with seven inline /a6 sites excluded. Four-word
+ordering retains all 56 significand bits, five defined CPU flags and sixteen
+actual Jcc outcomes. Undefined AF and signed CPU jumps as numeric ordering are
+outside the contract. Tests, immutable provenance checks and CI cover the new
+primitive; README/plan keep inline comparisons and production integration
+separate. Gameplay and save format 35 are unchanged.
+
+### Bounded inline SINGLE comparisons /a5
+
+[Inline SINGLE comparison evidence](research/yt-mbf-inline-single-compare/RECOVERY.md)
+now qualifies the composition of `SingleAddInlineOffset` and `CompareSingle` with
+275 full native flag/branch controls and 21 separate resolver-only controls.
+All source evidence was reused; sixteen original-byte caller slots are admitted
+statically. Selected memory is left and SINGLE FAC is right. Native probes retain
+all sixteen actual Jcc outcomes, five defined flags, readonly full FAC/operands
+and alternate-base poison. Wraparound stays resolver-only; full reads and
+synthetic descriptor/frame contexts are bounded. Tests and CI verify immutable
+provenance and portable traces. Inline DOUBLE comparisons and production
+integration remain separate; gameplay and save format 35 are unchanged.

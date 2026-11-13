@@ -7,15 +7,21 @@ not promises of complete modern parity, and a research-era “next” or
 “unimplemented” statement is not the current project backlog.
 
 Start with the [current reconstruction baseline and ordered backlog](RECONSTRUCTION_PLAN.md#current-work),
-checked against merged main through PR #137, using current save format **35**.
+checked against merged main through PR #147, using current save format **35**.
 The twenty-control source generator, safe projection, playable `qb36-v1` recipes,
 Genesis/admin reset integration and bounded multi-day acceptance are implemented.
 Direct and bounded inline SINGLE arithmetic, SINGLE/DOUBLE INT/FIX and signed16
 conversions are also complete within their documented native controls.
 [Direct DOUBLE addition](yt-mbf-double-add/RECOVERY.md) and
-[bounded inline /86](yt-mbf-inline-add-double/RECOVERY.md) are now qualified,
-including full eight-byte traces and declared errors. The next selected numeric
-audit is direct DOUBLE subtraction, beginning with retained source and callers.
+[direct subtraction](yt-mbf-subtract-double/RECOVERY.md) are qualified by native
+controls. [Bounded inline addition](yt-mbf-inline-add-double/RECOVERY.md)
+is merged in PR #138; do not repeat it. [Bounded inline subtraction /9e](yt-mbf-inline-subtract-double/RECOVERY.md)
+is now qualified separately with synthetic controls. [Direct DOUBLE multiplication](yt-mbf-multiply-double/RECOVERY.md) is now
+qualified by its separate native corpus and Go APIs. [Bounded inline /96](yt-mbf-inline-multiply-double/RECOVERY.md) is qualified
+separately with synthetic controls. [Direct DOUBLE division](yt-mbf-divide-double/RECOVERY.md) is now qualified,
+including distinct early/late underflow residues and both error kinds. [Bounded inline /8e](yt-mbf-inline-divide-double/RECOVERY.md) now qualifies
+that separate synthetic entry/frame slice. Direct division PR #144 is merged; the inline PR now targets main. After its merge, audit
+remaining runtime/maintenance gaps against implemented APIs and open work.
 The [root README](../README.md#playable-feature-overview) describes playable
 features and usage; the [sysop guide](../docs/SYSOP.md) covers modern save exports,
 backups and restoration. DOS save import/export remains unsupported.
@@ -66,3 +72,9 @@ Older experiment scripts expect DOS files beside `analysis/` and write results i
 - [Pure Go initializer source generator](yt-initializer-replay/GO_IMPLEMENTATION.md): ten complete native golden cases and RNG endpoints, portable hash fixtures, original DATA verification and bounded no-partial-output failures. Safe playable projection remains next.
 
 - [Safe QB source projection/admission](yt-initializer-replay/PROJECTION.md): unpublished modern candidates, collision/protected-HQ/connectivity rejection, current UTC stocks/watermarks and independently seeded required-home bootstrap. CLI/save/reset integration remains next.
+
+- [Direct SINGLE comparison flags and branch conditions](yt-mbf-single-compare/RECOVERY.md): 216 native controls, retained source/ABI, 203 original-byte direct callers; isolated Go primitive and immutable evidence checks.
+
+- [Direct DOUBLE comparison flags and branch conditions](yt-mbf-double-compare/RECOVERY.md): 486 native controls, retained source/ABI, thirty direct callers, full four-word ordering; inline /a6 excluded.
+
+- [Bounded inline SINGLE comparison /a5](yt-mbf-inline-single-compare/RECOVERY.md): 275 full native flag/branch controls and 21 resolver-only controls, sixteen static callers, reused resolver/direct APIs; inline DOUBLE remains separate.
