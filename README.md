@@ -2370,3 +2370,69 @@ and alternate-base poison. Wraparound stays resolver-only; full reads and
 synthetic descriptor/frame contexts are bounded. Tests and CI verify immutable
 provenance and portable traces. Inline DOUBLE comparisons and production
 integration remain separate; gameplay and save format 35 are unchanged.
+
+### Bounded inline DOUBLE comparisons /a6
+
+[Inline DOUBLE comparison evidence](research/yt-mbf-inline-double-compare/RECOVERY.md)
+now qualifies `SingleAddInlineOffset` plus `CompareDouble` with 329 full native
+flag/branch controls and 19 separate resolver-only controls. All source was
+reused; seven static caller sites match original bytes. Eight-byte protocols
+retain four-word ordering, full FAC/operands, alternate-base poison, five defined
+flags and sixteen actual Jcc outcomes. Full reads and declared synthetic frames
+are bounded; wrapped offsets remain resolver-only. Tests and CI verify immutable
+provenance and portable Go traces. Production integration and arbitrary contexts
+remain separate; gameplay and save format 35 are unchanged.
+
+### Raw sign/zero-test entries /a7–/aa
+
+[Sign/zero-test evidence](research/yt-mbf-sign-zero/RECOVERY.md) now qualifies
+`SignZeroSingle` and `SignZeroDouble` using existing comparison-against-zero
+primitives. There are 248 native controls, 102 original-byte maintenance caller
+slots and one four-byte source supplement; existing evidence supplies the rest.
+The APIs return five defined CPU flags and all sixteen Jcc conditions, not an
+integer SGN value. /a9 and /aa share the FAC high-word entry; input/FAC/RNG and
+captured registers remain unchanged. Native provenance/corruption checks,
+portable Go tests and CI retain the bounds. Production integration and adjacent
+boolean helpers remain separate; gameplay and save format 35 are unchanged.
+
+### Bounded Go clean-port maintenance replay
+
+[Go clean-port replay](research/yt-maint/GO_CLEAN_PORT_REPLAY.md) now derives
+1000 non-Earth port records from before-world bytes and explicit calendar/raw
+TIMER inputs. All 32 existing observed calendar/clock-matrix port blocks—32,000
+complete records—match byte for byte, with no new native captures. The isolated
+`qbmaint.ReplayCleanPorts` API preserves raw timestamps and untouched bytes,
+uses existing numeric primitives and rejects unsupported inputs atomically.
+Portable native fixtures, Go race tests and eight exporter/provenance tests run
+in CI. Python replay remains an independent reference. Populated-port economy,
+other phases and playable maintenance integration remain separate; gameplay and
+save format 35 are unchanged.
+
+### Bounded Go inactive rank/watermark replay
+
+[Inactive rank-cache replay](research/yt-maint/GO_INACTIVE_RANK_REPLAY.md) now
+qualifies `qbmaint.ReplayInactiveRanks` against 1,632 complete native fields
+across 32 existing runs, without new captures. It resets fifty inactive-player
+rank caches and the explicit final-day watermark, preserving every other world
+byte. Active-player inputs are rejected atomically. Portable field oracles reuse
+the clean-port before-world fixture; Go race tests and exporter/provenance checks
+run in CI. This remains a research-only writer, with active rankings, NPC phases,
+full Go maintenance and gameplay integration separate. Save format 35 is unchanged.
+
+### Bounded Go Wanderer birth replay
+
+[Initial Wanderer creation/placement](research/yt-maint/GO_WANDERER_BIRTH_REPLAY.md)
+now qualifies `qbmaint.ReplayWandererBirth` against 29 existing undisturbed native
+whole records and sector links. Three late-night targets altered by later combat
+are explicitly excluded from birth validation. Source constants, raw TIMER/RNG
+inputs and inherited record bytes are preserved; no new captures were acquired.
+Go race tests and exporter/provenance checks cover the bounded before-only API.
+RNG endpoints are independent model expectations, separately identified from
+native record/link oracles. Other NPC phases, full maintenance and gameplay
+integration remain separate; save format 35 is unchanged.
+
+The controller cleanup regression keeps its five-second outer hang guard and
+four-second initialization/deadline/cleanup bound, measured from the controller’s
+own recorded interval. Cold Node startup is excluded from that internal deadline
+measurement; forced termination, actual process exit and all six stall phases
+remain required. The production controller and retained capture sources are unchanged.

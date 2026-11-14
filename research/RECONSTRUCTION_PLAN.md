@@ -7,7 +7,7 @@ Build a modern Go BBS door using godoors, grounded in the supplied original 3.6 
 ## Current implementation and next work — checked 2026-11-13
 
 This section is the current planning baseline, checked against merged `main`
-through `ba4d27b0` (including merged numeric PRs #117–138 and #140–144 and merged maintenance PRs #88, #90–94 and #97–116, cursor fix #95 and smoke evidence #96), including PRs [#73](https://github.com/robbiew/yankeetrader/pull/73)
+through `44a717cc` (including clean-port replay PR #151 and merged numeric PRs #117–138 and #140–150 and merged maintenance PRs #88, #90–94 and #97–116, cursor fix #95 and smoke evidence #96), including PRs [#73](https://github.com/robbiew/yankeetrader/pull/73)
 (port rules/pricing), [#74](https://github.com/robbiew/yankeetrader/pull/74)
 (warp rules), [#75](https://github.com/robbiew/yankeetrader/pull/75)
 (raw RNG recovery), and [#76](https://github.com/robbiew/yankeetrader/pull/76)
@@ -33,7 +33,7 @@ exact DOS maintenance. Source builds default to version 0.1.0; save format is **
 
 ### Current numeric work — checked 2026-11-13
 
-PRs #117–138 and #140–147 are merged, including direct/inline DOUBLE
+PRs #117–138 and #140–150 are merged, including direct/inline DOUBLE
 addition/subtraction/multiplication and direct division. The inline /8e slice and its parent are merged. Do not duplicate either slice.
 The exported APIs, native fixtures, CI commands and retained reports agree:
 
@@ -129,8 +129,45 @@ reused, and sixteen caller slots match original bytes. Both tag paths, selector
 aliases, original caller headers, safe last spans, alternate-base poison and
 declared padded descriptor frames are covered; wrapped reads are not admitted.
 
-**Next: audit bounded inline DOUBLE comparisons /a6 against existing evidence
-and open PRs.** Do not repeat completed
+[Bounded inline DOUBLE /a6](yt-mbf-inline-double-compare/RECOVERY.md) now
+qualifies the existing resolver-plus-CompareDouble composition with 329 full
+native flag/branch controls and 19 separate resolver-only runs. All source was
+reused; seven static caller slots match original bytes. Four-word precision,
+both tag paths, selector aliases, original caller headers, safe last spans,
+alternate-base poison and declared padded frames are covered.
+
+[Raw sign/zero-test entries /a7–/aa](yt-mbf-sign-zero/RECOVERY.md) now qualify
+SignZeroSingle/SignZeroDouble through the existing comparison-against-zero
+primitives. The 248 native controls cover actual flags, sixteen Jcc outcomes,
+readonly state and the shared /a9-/aa FAC entry. Existing source was reused;
+only four missing prefix bytes were queried. 102 direct caller slots match
+original bytes. Adjacent boolean helpers and production integration are excluded.
+
+[Bounded pure Go clean-port replay](yt-maint/GO_CLEAN_PORT_REPLAY.md) now
+implements the existing ten-day/capped initial-port slice in `internal/qbmaint`.
+All 32 existing observed port blocks / 32,000 complete records match native
+bytes. No new captures were acquired. Portable before/schedule/native fixtures,
+input-admission and immutability tests, provenance checks and CI are implemented;
+the Python reference stays independent and playable maintenance is unchanged.
+
+[Bounded Go inactive rank/watermark replay](yt-maint/GO_INACTIVE_RANK_REPLAY.md)
+now ports the separate all-inactive writer. All 51 written fields per native run
+match across 32 existing runs / 1,632 complete fields. Every unrelated world byte
+is preserved; active players, invalid geometry and invalid final days are rejected
+without partial output. Portable oracles reuse the clean-port before-worlds,
+with independent Python synthesis and source/capture provenance checks.
+
+[Bounded Go Wanderer birth replay](yt-maint/GO_WANDERER_BIRTH_REPLAY.md)
+now ports the first initial NPC creation/placement step. Complete birth records
+and links match 29 existing undisturbed native runs; the three later-encounter
+matrix targets are explicitly excluded from birth validation. Original constants,
+raw helper TIMER seeding, inherited bytes and independent model RNG endpoints
+are retained with portable fixtures and provenance/admission tests.
+
+**Next: audit the recovered Xannoron creation slice—timestamp, ground and bank
+inputs—against existing captures/source and open PRs before a Go migration.**
+Occupied-sector retries, subsequent NPC movement/encounters, complete maintenance
+and production integration remain separate. Do not repeat completed
 SINGLE/DOUBLE arithmetic or integer conversions. General error/unwind behavior,
 production replay integration, DOS save interoperability and native Windows/live
 BBS acceptance remain separate.
