@@ -7,7 +7,7 @@ not promises of complete modern parity, and a research-era “next” or
 “unimplemented” statement is not the current project backlog.
 
 Start with the [current reconstruction baseline and ordered backlog](RECONSTRUCTION_PLAN.md#current-work),
-checked against merged main through PR #150, using current save format **35**.
+checked against merged main through PR #153, using current save format **35**.
 The twenty-control source generator, safe projection, playable `qb36-v1` recipes,
 Genesis/admin reset integration and bounded multi-day acceptance are implemented.
 Direct and bounded inline SINGLE arithmetic, SINGLE/DOUBLE INT/FIX and signed16
@@ -88,3 +88,84 @@ Older experiment scripts expect DOS files beside `analysis/` and write results i
 - [Bounded Go inactive rank-cache/watermark writer](yt-maint/GO_INACTIVE_RANK_REPLAY.md): 1,632 exact native fields across 32 retained runs, before-only synthesis and complete unrelated-byte preservation; active rankings excluded.
 
 - [Bounded Go initial Wanderer creation/placement](yt-maint/GO_WANDERER_BIRTH_REPLAY.md): 29 whole native records and links, three declared later-encounter exclusions, raw TIMER seeding and inherited bytes; other NPC phases excluded.
+
+- [Bounded Go Xannoron creation](yt-maint/GO_XANNORON_BIRTH_REPLAY.md): 32 native whole records/HQ links, Go-modeled Wanderer prefix, raw timestamp/rounding/state continuation and explicit admission bounds; no new captures.
+
+- [Bounded Go initial mobile groups](yt-maint/GO_INITIAL_MOBILE_GROUPS.md): 29 existing native field inventories, before-only Go birth handoff, bounded plain routes and modeled RNG continuation; three late-clock combat targets excluded.
+
+- [Bounded Go Mercenary Base birth](yt-maint/GO_MERCENARY_BASE_BIRTH.md): 29 complete existing native records/links, Go-modeled birth/mobile prefix, raw inherited FAC residues and one-draw reseed continuation; no new captures.
+
+- [Bounded Go initial NPC tail](yt-maint/GO_INITIAL_NPC_TAIL.md): 29 whole native YTDATA worlds match Go writer composition; eager desertion/conditional lottery RNG is separately modeled, with no new captures or six-file claim.
+
+- [Bounded Go initial auxiliary files](yt-maint/GO_INITIAL_AUX_FILES.md): source-qualified bootstrap news/scoreboard, separate native clocks, preserved DOS bytes and 29 complete six-file native output comparisons; no new captures or production integration.
+
+- [Research-only initial maintenance API](yt-maint/GO_INITIAL_MAINTENANCE_API.md): explicit before-file/phase recipe orchestration, 29 complete six-file native comparisons, composed RNG statistics and atomic phase failures; no new captures or playable integration.
+
+- [Bounded Go Wanderer assault](yt-maint/GO_WANDERER_ASSAULT.md): 54 modeled steps across three repeated observed late runs, three complete native final records, raw arithmetic/zero residues and unchanged ordinary-profile admission; integration remains separate.
+
+- [Explicit Go late-clock integration](yt-maint/GO_LATE_CLOCK_INTEGRATION.md): forward routing/shared pursuit, bounded assault receipts, reduced-force downstream phases and encounter news; all six files match in 32 existing observed runs while historical APIs stay strict.
+
+- [Research replay recipe/CLI adapter](yt-maint/REPLAY_CLI.md): versioned raw-clock recipes, verified before/source hashes, exclusive complete-bundle publication and32 existing six-file CLI comparisons; not modern maintenance or DOS save interoperability.
+
+The [bounded Go evolved-port replay](yt-maint/GO_EVOLVED_PORT_REPLAY.md) reuses
+the three-day convergence captures for port-only modeled handoff, with wider
+cargo sums and complete native-block validation; full Go evolved maintenance
+remains separate.
+
+The [bounded Go evolved-planet economy](yt-maint/GO_EVOLVED_PLANET_REPLAY.md)
+qualifies nine modeled phase worlds /27 updates against the existing Python
+phase, with complete native-chain and RNG witness checks kept separate from
+intermediate model receipts. Complete Go convergence composition now has a separate bounded API.
+
+[Bounded Go existing-home/mobile continuation](yt-maint/GO_EXISTING_HOME_CONTINUATION.md)
+now follows the Go planet phase through existing-home reuse, physical cache
+normalization and peaceful routes to the pre-Mercenary boundary. Six complete
+modeled phase worlds are qualified separately from full native-chain checks.
+The Mercenary/lottery tail and auxiliary output are now migrated separately;
+full cross-day Go chaining now has a separate bounded API.
+
+[Bounded Go evolved-tail replay](yt-maint/GO_EVOLVED_TAIL_REPLAY.md) qualifies
+physical-sector desertion, retained empty-route Mercenary movement/reactivation
+and inactive-player lottery selection against 15 modeled Python phases, with
+540 native files and independent RNG/cache qualification kept separate.
+
+[Bounded Go day-one convergence admission](yt-maint/GO_CONVERGENCE_DAY_ONE.md)
+now preserves the active Haven while restoring missing homes and routing mobile
+groups. Three complete modeled phases and direct Go port/economy/home/tail
+composition are qualified separately from full native-chain file/RNG/cache
+audits. Evolved auxiliary/final metadata is now implemented; complete cross-day
+Go chaining now has a separate bounded API.
+
+[Bounded Go evolved auxiliary/final metadata](yt-maint/GO_EVOLVED_AUXILIARY.md)
+qualifies all six outputs in nine retained day cases, including direct per-day
+Go phase composition. Complete cross-day Go chaining is now qualified separately; native evidence
+and intermediate modeled inputs retain separate provenance.
+
+[Complete Go three-day convergence chaining](yt-maint/GO_CONVERGENCE_CHAIN.md)
+uses only its own six-file children after the original three inputs. Nine day
+results match native-qualified hashes across three independent source-clock
+sequences. [Research recipe/CLI v2](yt-maint/REPLAY_CLI.md#three-day-chain-recipe-v2) now
+exposes this bounded chain through a separate profile and isolated three-day
+bundle; the existing v1 profiles remain intact.
+
+[Bounded Go ordinary/occupied-planet economy](yt-maint/GO_OCCUPIED_PLANET_REPLAY.md)
+qualifies 30 modeled phases /24 updates from the existing ten-case corpus, with
+actual Go port handoffs and separate 1080-file/1872-witness native qualification.
+No acquisition is repeated. The foreign-defense primitive is now qualified
+separately; strong neutral-planet ground combat is now qualified separately.
+Occupied-world routing/news/score composition remains next.
+
+[Bounded Go foreign-defense combat](yt-maint/GO_FOREIGN_DEFENSE_REPLAY.md)
+qualifies 63 modeled encounters and 24 synthetic gate/batch controls separately
+from the full native-file/RNG witness audit. Routing and casualty publication
+remain distinct integration work; no captures or production behavior changed.
+
+[Bounded Go strong neutral-planet ground assault](yt-maint/GO_NEUTRAL_GROUND_ASSAULT.md)
+qualifies 57 modeled attacks and 36 synthetic controls while retaining original
+capture hashes. Next integrate both combat primitives into bounded occupied-world
+routing, shared pursuit, scan suppression and casualty publication.
+
+[Bounded Go occupied-world home/mobile routing](yt-maint/GO_OCCUPIED_ROUTING_REPLAY.md)
+qualifies 30 complete modeled phases /120 combat events, including actual Go
+port/economy handoffs, shared pursuit, scan suppression and moving-group writes.
+Casualty news/scores and complete occupied six-file Go composition remain next.

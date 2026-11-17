@@ -22,6 +22,7 @@ details and limitations.
 | Back up, export, restore or reset a season | [Season administration](#season-administration), [Storage and recovery](#storage-and-recovery), and the [sysop guide](docs/SYSOP.md) |
 | Read detailed game rules | [Planet management](#planet-management), [Teams](#teams), [Combat preparation](#combat-preparation), and [plasma](#bounded-plasma-launching) |
 | Find the next unfinished task | [Current reconstruction plan](research/RECONSTRUCTION_PLAN.md#current-work) — verified implementation inventory and remaining work; older milestones are historical |
+| Check licence terms | [Licence](#licence) and [NOTICE.md](NOTICE.md) |
 | Review the reconstruction | [History](#a-little-history), [screenshots](#screenshots), [research](research/) and [validation evidence](evidence/) |
 
 ## Screenshots
@@ -225,7 +226,7 @@ claim of complete DOS parity or live BBS acceptance; see
 | **Combat** | Confirmed planetary ground assaults and ship fighter attacks, routed missiles and retaliation, confirmed plasma launches with bounded black-hole routing, planetary bombardment and destruction, sector-fighter deployment/recovery, reinforcement, breach combat, surrender and escape; death, loot, port settlement, replacement ships and minefields. |
 | **Mercenaries and Xannor** | Mercenary bribery/recruitment, tax-funded hiring, daily routes, desertion and base restoration; Xannor HQ/home restoration, reclaim battles, bounded mobile groups, combat aftermath and ship-bound revenge. Direct Xannor fighter casualties can earn capped turn bonuses; HQ victories award up to 1,000,000 exact credits and publish a victory notice. |
 | **Computer and communication** | Rankings, commerce and planet reports, planet/port finders, trading forecasts, direct/team/broadcast radio and message history; spies report mines, planets, defenses, ships and login-local disruptions. Newspaper coverage includes logins, planet/team creation, combat outcomes, daily events, HQ victories and confirmed public broadcasts. |
-| **Presentation and door sessions** | DOS-style menus, ANSI/CP437 or plain text, compact commands, local play and Door32 sessions. Exit music is enabled for detected SyncTERM/CTerm terminals. |
+| **Presentation and door sessions** | DOS-style menus, ANSI/CP437 or plain text, compact commands, local play, Door32 sessions and DOORDROP.INI 1.0 sessions. Exit music is enabled for detected SyncTERM/CTerm terminals unless a DOORDROP.INI caller has muted sound. |
 
 **Multi-caller simulation completed:** six concurrent simulated BBS callers played
 through Door32 processes to a configured 20-port Genesis victory, including
@@ -335,7 +336,7 @@ plain text. No terminal-size probes are required.
 
 Press a key at the title, then a separate key after the opening artwork. Each
 page stays visible until its own keypress. New players enter an in-game alias (Enter uses the
-Door32 real name, or the local name), confirm with `Y`, and choose whether to read
+Door32 or DOORDROP.INI real name, or the local name), confirm with `Y`, and choose whether to read
 the original instructions. Press a key after ship information. At the main
 prompt, Enter redisplays the sector, `?` shows the original two-column help,
 `C` enters the ship's computer, and `Q` asks for confirmation. Commands finish
@@ -570,6 +571,20 @@ Use the directory containing that node's Door32 drop file and the same absolute 
 ```
 
 `-system` is a stable namespace for the BBS. Identity uses this value plus the positive user-record number on Door32 line five; alias is display information. Changing an alias does not create a fresh ship. Keep the system value stable. Local identities are separate from Door32 identities.
+
+### DOORDROP.INI
+
+The door also reads [DOORDROP.INI 1.0](https://github.com/SynchronetBBS/sbbs/blob/master/docs/doordrop_ini.md). Pass the file's full path, which must end in `.ini`, as `-drop`, or leave out `-drop` and `-local` and the door uses the `DOORDROP_INI` environment variable:
+
+```sh
+/path/to/yankeetrader/bin/yt -data /path/to/yankeetrader/data -drop /path/to/node1/DOORDROP.INI -system mybbs
+```
+
+- **Identity** is `-system` plus `USER_KEY`, which the BBS never changes or reuses for an account. A DOORDROP.INI identity is separate from the Door32 identity of the same caller, so switching an existing door from DOOR32.SYS to DOORDROP.INI gives returning players a fresh ship. Choose the drop file type before opening a season.
+- **Guest accounts** (`USER_ROLE=guest`) are shared by unregistered callers, so they are told they can't play and the door exits.
+- **Time** comes from `TIME_LEFT`, rounded up to whole minutes. A missing `TIME_LEFT` means no BBS limit, and the door caps the session at 1,440 minutes.
+- **Sound:** `PREF_SOUND=0` turns off the exit music.
+- **Transport:** configure the door for CP437 text (not "Support UTF-8") and `COMM_TYPE=stdio` on Linux/macOS, or `stdio` or `socket` on Windows. GoDoors rejects other connection types and character sets with an error instead of garbling the session. New players' default in-game alias is `USER_REALNAME` when the BBS sends it, otherwise `USER_ALIAS`.
 
 GoDoors handles standard I/O on macOS/Linux and inherited Door32 sockets on supported Windows hosts. Linux/macOS sessions accept unused Door32 communication handles such as `-1`, using the BBS-provided standard I/O streams. Rebuild older binaries with the GoDoors revision below to pick up this startup fix. The door honors the drop file's remaining session time (1–1,440 minutes). The DOS-style interface supports ANSI/CP437 and plain text; `-compact` retains the original printable-ASCII command interface. Neither requires terminal probing.
 
@@ -869,7 +884,9 @@ CI allows 60 minutes for the complete race, evidence, terminal and cross-build
 sequence. Wanderer-aware maintenance fixtures isolate unrelated production and
 random encounters while retaining their resource, replay and durability checks.
 
-Requires Go 1.23+ and a local GoDoors checkout at commit [`2bb91d527ae926b436a5a65eb380441eb937e6a9`](https://github.com/robbiew/godoors/commit/2bb91d527ae926b436a5a65eb380441eb937e6a9) or a descendant. That revision fixes `OpenSession` rejecting unused Unix Door32 handles such as `-1`; it also includes the timed-input API and preserves partial escape sequences across the 1 ms autopilot polls. `go.mod` currently replaces `github.com/robbiew/godoors` with `../godoors`, matching this workspace. For another checkout, point that replacement at the matching GoDoors source before building. CI and release builds pin this GoDoors revision. The Unix handle regression and GoDoors suite pass locally, along with Yankee Trader startup and door tests; live Scorpio BBS acceptance remains pending.
+Requires Go 1.23+ and a local GoDoors checkout at commit [`d040641937f3d153eefa9d46f23049c4cf91994e`](https://github.com/robbiew/godoors/commit/d040641937f3d153eefa9d46f23049c4cf91994e) or a descendant. That revision adds DOORDROP.INI 1.0 support (required terminal keys, host-supplied size and the `PREF_SOUND` preference) and GoDoors' MIT licence, which release archives bundle under `licenses/`; it also fixes `OpenSession` rejecting unused Unix Door32 handles such as `-1`, and includes the timed-input API and preserves partial escape sequences across the 1 ms autopilot polls. `go.mod` currently replaces `github.com/robbiew/godoors` with `../godoors`, matching this workspace. For another checkout, point that replacement at the matching GoDoors source before building. CI and release builds pin this GoDoors revision. The Unix handle regression and GoDoors suite pass locally, along with Yankee Trader startup and door tests; live Scorpio BBS acceptance remains pending.
+
+The repository checks out on Windows. Windows reserves device names such as `AUX`, `CON`, `NUL`, `COM1` and `LPT1`, with or without an extension, so no path may use one: the Go file is `internal/qbmaint/auxfiles.go`, and the auxiliary native packet is `research/yt-maint/record-replay-native/auxiliary/`. Its bytes, its `aux` contract and pin key and every hash are unchanged; `scripts/verify_maintenance_record_inputs.py` maps that key to the new directory.
 
 ```sh
 go build -o bin/yt ./cmd/yt
@@ -926,6 +943,19 @@ Production uses elapsed time capped at ten days. Visiting grows rates before pro
 Money remains exact integer credits, including interest. This deliberately fixes the DOS large-balance banking exploit: even a one-credit deposit debits the ship. Empty transfers cannot increase production; failed or competing actions cannot duplicate goods. Clock rollback preserves the production watermark. Movement, reconnect and maintenance invalidate landing authorization.
 
 Version-1 through version-34 worlds upgrade to version 35 in memory and are saved atomically on the next successful update, preserving existing players and assets. The local `data` and `bin` directories are ignored by Git. The original DOS distribution and full recovery workspace are preserved under `archive/`; portable supporting reports and compressed DOS snapshots are included under `research`.
+
+## Licence
+
+The Yankee Trader: Resurrection code (Go source, scripts, tests and
+documentation) is released under the [MIT License](LICENSE), as is the
+[GoDoors](https://github.com/robbiew/godoors) library it builds against, so
+sysops and contributors can fork, modify and share changed builds. The original
+Yankee Trader 3.6 game, its DOS distribution under `archive/dos-original/`, and
+the original artwork and text embedded in the game remain Copyright (c)
+1989–1994 Alan Davenport and are **not** covered by the MIT License. DOSBox
+Staging excerpts kept as research evidence stay under GPL-2.0-or-later. See
+[NOTICE.md](NOTICE.md) for the full breakdown. Release archives include
+`LICENSE`, `NOTICE.md` and the bundled dependency licences under `licenses/`.
 
 ## Complete recovery archive
 
@@ -2436,3 +2466,324 @@ four-second initialization/deadline/cleanup bound, measured from the controller�
 own recorded interval. Cold Node startup is excluded from that internal deadline
 measurement; forced termination, actual process exit and all six stall phases
 remain required. The production controller and retained capture sources are unchanged.
+
+### Bounded Go Xannoron creation replay
+
+[Xannoron creation evidence](research/yt-maint/GO_XANNORON_BIRTH_REPLAY.md) now
+qualifies `qbmaint.ReplayXannoronBirth` against all 32 existing native whole
+creation records and HQ links, with a Go-modeled Wanderer prefix. Qualified raw
+numeric primitives preserve TIMER/60/INT residue, separate bank rounding and
+three-draw ground/bank RNG continuation. No new captures were acquired. Native
+record/field oracles and independent model RNG endpoints are identified separately.
+Tests reject unsupported inputs atomically and preserve inherited/unrelated bytes.
+Exact-zero TIMER, zero-ground birth and occupied-HQ cases remain excluded. This
+is prefix creation parity, not final-world/full-maintenance or gameplay
+integration; save format 35 is unchanged.
+
+### Bounded Go initial mobile groups
+
+[Initial mobile-group evidence](research/yt-maint/GO_INITIAL_MOBILE_GROUPS.md)
+qualifies `qbmaint.ReplayInitialMobileGroups` against 29 existing native force,
+owner, group-pointer and endpoint-mine inventories. A Go-modeled Wanderer and
+Xannoron prefix feeds the RNG handoff. Allocation, directed plain routes and
+eager inactive-player draws continue through 39 helper-one and 19 helper-two
+reseed samples. Tests preserve the 10000-force total and unrelated bytes, reject
+unsupported inputs atomically and compare separately modeled RNG endpoints.
+Pending revenge pointers are rejected even for inactive victims, with a regression
+based on the recovered inactive-slot control.
+Three existing late-clock Wanderer-combat runs are explicitly excluded; no new
+captures were acquired. Existing groups, retries, merges, regeneration and
+encounters remain outside this research API. Complete maintenance, gameplay
+integration and DOS save interoperability remain separate; save 35 is unchanged.
+
+### Bounded Go Mercenary Base creation
+
+[Mercenary Base creation evidence](research/yt-maint/GO_MERCENARY_BASE_BIRTH.md)
+qualifies `qbmaint.ReplayMercenaryBaseBirth` against 29 existing complete native
+records and placement links, after a Go-modeled Wanderer/Xannoron/mobile-group
+prefix. The API preserves inherited fields and raw stock/FAC zero residues,
+reseeds from the next measured helper TIMER and draws one empty placement.
+Portable fixtures, corruption checks, atomic admission and byte-preservation
+tests are included in CI; no new captures were acquired. Pending revenge,
+existing bases, placement retries and noninitial group worlds are excluded.
+RNG endpoints are independently modeled, not new native measurements. Hiring,
+desertion/lottery tail, full maintenance and gameplay integration remain separate;
+save format 35 is unchanged.
+
+### Bounded Go initial NPC tail and complete world-file composition
+
+[Initial NPC tail evidence](research/yt-maint/GO_INITIAL_NPC_TAIL.md) now qualifies
+`qbmaint.ReplayInitialNPCTail` for the zero-treasury, all-inactive initial profile.
+It consumes twenty eager defense draws, then the lottery gate and its conditional
+helper/player draw without writing world bytes. Tests cover both branches, the
+exact .5 gate, raw clock inventory and atomic admission. Composing the Go ports,
+births, mobile groups, base and ranks now matches all bytes of 29 existing native
+YTDATA worlds; no captures were added. RNG endpoints remain Python-model
+expectations. The three late-clock Wanderer-combat prefixes, funded hiring, human
+desertion, active-player lottery, auxiliary files, complete six-file maintenance
+and playable integration remain separate. Modern save format 35 is unchanged.
+
+### Bounded Go initial auxiliary files and six-file validation
+
+[Initial auxiliary-file evidence](research/yt-maint/GO_INITIAL_AUX_FILES.md) now
+qualifies `qbmaint.ReplayInitialAux` for the all-inactive, missing-NPC bootstrap
+profile. It preserves before name/news bytes, emits empty messages and generates
+news/scoreboard bytes from source-qualified literals and separately sampled
+calendar/clock inputs, including native `24:00:00` without date carry. The fixed
+bootstrap scoreboard has exactly 10000 Xannor fighters and no other scored force;
+this is not a general PRINT USING formatter or active ranking implementation.
+Composing the bounded Go world writers and auxiliary API matches all six complete
+native files in 29 existing plain-route runs. Tests preserve DOS CRLF/EOF, reject
+unsupported inputs atomically and keep output storage independent. No new captures
+were acquired. Late-clock combat prefixes, active players, message compression,
+general maintenance, DOS save loading, a public orchestration CLI and playable
+integration remain separate; modern save format 35 is unchanged.
+
+### Research-only initial maintenance orchestration
+
+[Initial maintenance API](research/yt-maint/GO_INITIAL_MAINTENANCE_API.md) now
+exposes `qbmaint.ReplayInitialMaintenance`: one readonly before-file map plus an
+explicit phase recipe yields all six DOS files and composed RNG statistics. It
+uses the already qualified ports, births, mobile, base, tail, rank and auxiliary
+slices without target inputs or corrections. All 29 existing plain-route
+six-file captures match through this single API. Errors at any phase return no
+partial files/statistics; files and recipe slices remain unchanged. This is an
+exported research package API, not a CLI, modern save recipe, general DOS save
+loader or playable maintenance replacement. The three late-clock combat prefixes
+and other unsupported profiles remain rejected; no captures or save changes.
+
+### Bounded Go late-clock Wanderer assault primitive
+
+[Wanderer assault evidence](research/yt-maint/GO_WANDERER_ASSAULT.md) now qualifies
+`qbmaint.ReplayWandererAssault` for the restored neutral zero-ground, empty-stock
+planet with rates above 500. The three existing observed late-clock runs each
+contain the same 18-group scenario: 54 modeled steps agree, and each Go chain
+ends at the complete native Wanderer record. Portable gzip containers are checked
+by complete decompressed bytes across Python versions, with recompression and
+corruption regressions. Raw multiply/divide/subtract
+composition, the strict half gate, inherited zero residues and the original
+450-fighter batch defect are preserved only in this research API. No captures
+were added. Modeled step inputs/states are distinct from native final record
+oracles. Routing, shared pursuit, complete late-clock orchestration/news and
+other combat branches remain separate; ordinary 29-run APIs retain their existing
+bounds and modern gameplay/save 35 is unchanged.
+
+### Explicit Go late-clock combat integration
+
+[Late-clock integration evidence](research/yt-maint/GO_LATE_CLOCK_INTEGRATION.md)
+qualifies `qbmaint.ReplayInitialMaintenanceWithWanderer` and the explicit mobile
+variant against all 32 existing observed initial runs: 29 ordinary and three
+repeated late-clock combat runs. All six complete native files match. Forward
+routes, shared pursuit, lost-group pointer clearing, skipped eager scans and
+RNG continuation now compose with the bounded assault. Replayed encounter
+receipts account for the reduced force, two surviving desertion draws, dynamic
+NPC score and 36 encounter-news lines. Ordinary exported APIs retain their
+strict bounds and their original 29-run fixtures. No new captures or native
+endpoint measurements were added; model receipts remain distinct from native
+file oracles. Partial or other encounter chains, defended/populated planets,
+general maintenance and playable integration remain excluded; save 35 is unchanged.
+
+### Research-only maintenance recipe/CLI adapter
+
+[Research replay CLI](research/yt-maint/REPLAY_CLI.md) now exposes
+`go run ./cmd/qbmaint-replay -recipe FILE -before DIR -source-root CHECKOUT -out NEWDIR`.
+Recipe v1 selects `initial` or `initial-wanderer`; v2 separately selects
+`convergence-three-day`. Both preserve raw SINGLE clock hex and check all three
+before-file hashes plus declared source
+hashes against the original YTMAINT identity. Unknown/duplicate/missing fields,
+profile mismatches and changed inputs fail before publication. V1 publishes six
+DOS files and a receipt; v2 publishes three day directories and one receipt under
+`NEWDIR/replay/`. Existing
+paths and output inside input/source trees are refused. The adapter reuses all
+32 existing fixtures /192 complete native outputs; no captures were added.
+These are declared provenance checks, not authentication of arbitrary recipes
+or new native RNG witnesses. The source-only tool is separate from `yt -maint`,
+modern saves and release packages; gameplay/save format35 is unchanged. See the
+[sysop boundary note](docs/SYSOP_CHEAT_SHEET.md#8-research-only-dos-replay).
+
+### Bounded Go evolved-port economy
+
+[Go evolved-port replay](research/yt-maint/GO_EVOLVED_PORT_REPLAY.md) now carries
+its own modeled port blocks through the retained three-day convergence profile.
+The nine Go blocks match complete native hashes; the exporter checks all 54
+native port-block pairings without new captures or native child-world inputs.
+Wider cargo sums, SINGLE rate promotions and stored-maximum rounding are retained,
+with profile-refusal, corruption and immutability tests. This is port-only research:
+full Go evolved maintenance and auxiliary composition remain separate.
+Initial-only replay APIs, CLI v1 profiles, modern saves and gameplay are unchanged.
+
+### Bounded Go evolved-planet economy
+
+[Go evolved-planet replay](research/yt-maint/GO_EVOLVED_PLANET_REPLAY.md) now models
+the retained named planets' elapsed production, old-bank bonuses, interest,
+ground, surplus growth and three eager event draws. All nine complete Go phase
+worlds /27 planet updates match the independently implemented Python phase;
+the exporter revalidates its full three-day chains against 324 native files and
+501 RNG witnesses. Intermediate phase receipts remain modeled, and later NPC
+writes are separate. Tests cover assignment order, immutable inputs, raw clocks,
+unsupported contexts, atomic refusals and corrupted evidence. No captures were
+added. Full Go evolved NPC/auxiliary composition, playable integration and native
+Windows/BBS acceptance remain separate; CLI v1 profiles and save 35 are unchanged.
+
+### Bounded Go existing-home and mobile continuation
+
+[Existing-home continuation](research/yt-maint/GO_EXISTING_HOME_CONTINUATION.md)
+now reuses evolved homes, normalizes physical group caches once and continues
+peaceful mobile routes on days 307/308. Six complete Go phase worlds, helper
+reseeds, 120 group outcomes and 114 route activities match the existing Python
+phase. The exporter separately revalidates 324 native files, 501 RNG witnesses
+and 1,440 cache fields. No captures were added or used as endpoint corrections.
+Tests also compose the Go planet phase directly into this phase, cover 17/0
+reallocations, preserve Base bytes and reject unsupported or incomplete inputs
+without partial output. README/plan and CI distinguish model receipts from
+native oracles. The [evolved tail](research/yt-maint/GO_EVOLVED_TAIL_REPLAY.md)
+now has its own bounded Go API; [evolved auxiliary
+output](research/yt-maint/GO_EVOLVED_AUXILIARY.md) is now implemented; full
+cross-day Go chaining now has a separate bounded convergence API. CLI v1
+profiles, modern gameplay and save 35 are unchanged.
+
+### Bounded Go evolved Mercenary/desertion and lottery tail
+
+[Evolved Go tail replay](research/yt-maint/GO_EVOLVED_TAIL_REPLAY.md) now counts
+physical defenses independently of duplicate group pointers, follows the
+retained 37/97,525-fighter empty-route movement/reactivation paths and computes
+the inactive-player lottery. All 15 complete phase worlds, helper reseeds,
+routes, gates and final states match the Python phase. The exporter separately
+checks 540 native files, 885 RNG witnesses and 1,440 cache fields using existing
+captures. Tests compose Go economy, existing-home/mobile continuation and tail
+directly in six cases, preserve departure-zero residues and reject unsupported
+branches without partial output. Model receipts remain distinct from native
+observations. Day-one convergence admission now has its own bounded API; evolved
+auxiliary output is now implemented; complete cross-day Go chaining now has a
+separate bounded API. Initial/late APIs, research CLI v1, gameplay and save 35
+are unchanged.
+
+### Bounded Go day-one convergence admission
+
+[Day-one convergence replay](research/yt-maint/GO_CONVERGENCE_DAY_ONE.md) now
+restores missing NPC homes and runs cache-normalized mobile allocation while
+preserving active Convergence Haven. Three complete phase worlds, 60 helper
+reseeds and 19 mobile activities per run match the existing Python phase. Tests
+compose actual Go port, planet, birth/mobile and tail outputs/states in all
+three cases. The exporter separately revalidates 324 native files, 501 RNG
+witnesses and 1,440 cache fields; no native child or endpoint corrections enter
+synthesis, and no captures changed. Strict older APIs, raw residues, unassigned
+bytes, source dates and atomic refusals are covered. Evolved auxiliary/final
+metadata now has its own bounded API; [complete Go
+chaining](research/yt-maint/GO_CONVERGENCE_CHAIN.md) now has its own bounded
+API; CLI v1 profiles, modern gameplay and save 35 are unchanged.
+
+### Bounded Go evolved auxiliary output and final metadata
+
+[Evolved auxiliary replay](research/yt-maint/GO_EVOLVED_AUXILIARY.md) now writes
+conditional home-creation news, the physical-force scoreboard, raw journal
+rotation and final watermark/inactive ranks. All nine complete six-file results
+match the retained qualified hashes, including tests composing actual Go port,
+planet, home/mobile and tail outputs within each day. The exporter independently
+revalidates 324 native files, 501 RNG witnesses and 1,440 cache fields without
+new captures or native child-world inputs. Separate report clocks, DOS CRLF/EOF,
+immutable inputs and atomic profile refusals are covered; older initial/late
+auxiliary regressions remain intact. These per-day tests still start from
+independently modeled before files; [complete Go
+chaining](research/yt-maint/GO_CONVERGENCE_CHAIN.md) now qualifies actual
+cross-day handoffs separately. Research CLI v1, modern gameplay, save 35 and
+Windows/live BBS acceptance remain unchanged.
+
+### Bounded Go three-day convergence chain
+
+[Complete Go convergence chaining](research/yt-maint/GO_CONVERGENCE_CHAIN.md)
+now feeds each day's own six-file output into the next day, beginning with only
+the three measured original inputs. All nine day results across three source
+clock sequences match the native-qualified six-file hashes. It reuses the
+qualified port, planet, home/mobile, tail and auxiliary APIs without loading
+native child worlds, phase targets, cache probes or observed RNG endpoints.
+RNG state continues within each day; a fresh source-derived startup seed begins
+each DOS run. Late failures return no partial chain, and inputs and earlier-day
+outputs remain unchanged. Existing evidence checks separately revalidate 324
+native files, 501 RNG witnesses and 1,440 cache fields; no captures changed.
+The [research CLI v2 adapter](research/yt-maint/REPLAY_CLI.md#three-day-chain-recipe-v2)
+now exposes this chain separately. Existing CLI v1 profiles, modern gameplay and
+save 35 are unchanged; production maintenance, general DOS interoperability
+and native Windows/BBS
+acceptance remain separate.
+
+### Research three-day recipe/CLI profile
+
+[Recipe v2](research/yt-maint/REPLAY_CLI.md#three-day-chain-recipe-v2) explicitly
+selects `convergence-three-day` with three ordered source-day recipes and only
+the original three before files. The exporter reuses qualified portable fixtures;
+expected outputs and states remain separate from replay inputs. The command
+publishes all 18 DOS files under `replay/day-1/` through `day-3/` and one receipt
+with per-day startup/final states, draw counts, verified inputs and output hashes.
+States are labeled modeled; hashes bind declared provenance, not recipe authors.
+Three compiled-CLI chains match all nine qualified six-file results. Schema,
+source/before corruption, late-helper failure, journal rotation, output reuse
+and atomic publication are tested; existing 32 one-day cases remain intact.
+No native captures, gameplay policy, modern saves or release packages changed.
+
+### Bounded Go ordinary/occupied-planet economy
+
+[Ordinary occupied-world economy](research/yt-maint/GO_OCCUPIED_PLANET_REPLAY.md)
+now has a separate Go research API for clean day-306 ordinary slots 2/3: zero-bank,
+empty stocks, 1000 production rates, 500000 ground and neutral/Xannor owners.
+All 30 complete modeled phase worlds, 24 updates, eager event draws and final
+states match the existing Python replay, including actual Go port handoffs.
+The exporter separately revalidates 180 six-file comparisons /1080 native files
+and 1872 RNG witnesses. Native targets and captured endpoints never correct
+synthesis, and no captures or historical source hashes changed. Tests cover
+fractional production, wider ground flooring, raw-zero timestamps, owned storage,
+exact write bounds and atomic profile refusals. Earlier convergence APIs and
+CLI profiles stay strict; combat/routing and complete occupied-world Go output
+remain next, with modern gameplay, save 35 and release packages unchanged.
+
+### Bounded Go foreign-defense combat
+
+[Foreign-defense replay](research/yt-maint/GO_FOREIGN_DEFENSE_REPLAY.md) now models
+the retained hazard-free sector-854 Mercenary defense branch through a separate
+Go API. All 63 modeled encounter worlds, raw damage counters, capped survivors
+and RNG receipts match the existing Python rules. Twenty-four synthetic controls
+use real LCG states to cover the exact-half/adjacent gate and strict 500/5000
+batch thresholds; they are not new native runs. Inputs stay immutable, only the
+physical defender fields change, and defeated force/owner clear to canonical
+zero. A calculated pursuit-clear flag is returned for later routing integration.
+The exporter separately revalidates 1080 native files and 1872 RNG witnesses
+without new captures, target corrections or changed observation hashes. Tests,
+corruption/provenance controls and CI cover the bounded primitive; moving-group
+routing, neutral-planet ground assault, casualty news/scores and full occupied
+Go maintenance remain separate. Existing CLI profiles, gameplay and save 35 are
+unchanged.
+
+### Bounded Go strong neutral-planet ground assault
+
+[Strong neutral-planet replay](research/yt-maint/GO_NEUTRAL_GROUND_ASSAULT.md)
+now models the retained unscreened Route Haven branch at sector 854 /slot 2.
+All 57 modeled encounter worlds, ground losses, signed attacker remainders and
+RNG receipts match the existing Python rules. Thirty-six synthetic controls use
+real recovered RNG states to cover zero/half/maximum draws, small/maximum forces
+and whole/fractional starting ground. Only the ground field changes; production,
+warehouse stocks, owner and placement remain untouched. Inputs are immutable,
+outputs owned and unsupported contexts fail without partial results. The exporter
+separately revalidates 1080 native files and 1872 RNG witnesses without changing
+observations or acquiring new captures. Tests and CI distinguish modeled phase
+receipts from native whole-run qualification. Next is bounded occupied-world
+routing/shared-pursuit integration with both combat primitives, then casualty
+news/scores and complete six-file output. Existing research CLI profiles, modern
+gameplay, save 35 and release packages are unchanged.
+
+### Bounded Go occupied-world home/mobile routing
+
+[Occupied routing replay](research/yt-maint/GO_OCCUPIED_ROUTING_REPLAY.md) now
+composes home creation, initial allocation, directed routes, shared pursuit and
+both qualified combat primitives through Mercenary Base birth. All 30 complete
+modeled phase worlds, 120 combat events, traversed prefixes, skipped/eager scans,
+helper reseeds and final states match the existing Python phase. Tests feed
+actual Go port and ordinary-economy output/state directly into routing. Defeated
+foreign defenses clear pursuit; dead groups stop traversal before interception
+scans and clear their pointers. Physical defense and moving-group conservation
+remain distinct, including neutral force retained during deposition. The exporter
+separately revalidates 1080 native files and 1872 RNG witnesses without new
+captures, endpoint correction or changed native hashes. Input isolation, owned
+outputs, strict historical gates and atomic late failures are tested. Next are
+casualty-dependent news/scores, downstream tail composition and complete occupied
+six-file Go output. Existing research CLI profiles, gameplay, save 35 and release
+packages are unchanged.
