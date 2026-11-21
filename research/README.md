@@ -169,3 +169,57 @@ routing, shared pursuit, scan suppression and casualty publication.
 qualifies 30 complete modeled phases /120 combat events, including actual Go
 port/economy handoffs, shared pursuit, scan suppression and moving-group writes.
 Casualty news/scores and complete occupied six-file Go composition remain next.
+
+[Occupied casualty news and faction scores](yt-maint/GO_OCCUPIED_REPORTS.md)
+qualify 30 five-file report sets, including actual Go combat-event handoffs,
+while retaining modeled-final-world and native whole-run provenance boundaries.
+Next compose the downstream tail/final metadata and complete occupied Go outputs.
+
+- [Go occupied six-file replay](yt-maint/GO_OCCUPIED_RECORDS.md): before-only
+  composition of existing Go phases through final metadata and reports, 30
+  complete sets with retained native qualification; research API only.
+
+- [Occupied research CLI v3](yt-maint/REPLAY_CLI.md#occupied-day-306-profile-v3):
+  30 existing-fixture recipes, before/source checks and fresh six-file publication
+  with modeled faction/combat/tail receipts; no production maintenance selection.
+
+- [Bounded Go held-friendly stock pickup](yt-maint/GO_FRIENDLY_STOCK.md):
+  24 modeled Mercenary phases from existing four-day replay; distinct cached
+  physical force, receipt actor, whole stock and zero residues; native 864-file /
+  1104-child-witness qualification remains separate.
+
+- [Bounded Go departed garrison/stock](yt-maint/GO_DEPARTED_STOCK.md): 24 modeled
+  phases /66 calculated activations, including later descending-scan reactivation;
+  distinct local physical force and incoming pickup actor; retained 864-file /
+  1152-child-witness native qualification.
+
+- [Bounded Go neutral-owner/mine pickup](yt-maint/GO_NEUTRAL_OWNER_STOCK.md):
+  18 modeled phases /27 activations, incoming count-two mine damage before local
+  addition and distinct neutral transfer; retained 648-file /855-child-witness
+  qualification remains independent.
+
+- [Bounded Go fatal Mercenary defense/stock continuation](yt-maint/GO_DEFENDER_STOCK.md):
+  24 modeled phases from existing five-day Python replay, unit-casualty fatal
+  offense and extinct next-day scans; retained 864-file /1074-child-witness
+  qualification remains independent.
+
+- [Bounded Go victorious gateway continuation](yt-maint/GO_GATEWAY_VICTORY.md):
+  12 modeled phases /21 activations, source-selected victory without immediate
+  pickup; selected 432-file /660-witness qualification is distinct from the wider
+  gateway 1296-file /1962-witness audit.
+
+- [Bounded Go clear-gateway stock conversion](yt-maint/GO_CLEAR_GATEWAY_STOCK.md):
+  36 modeled phases for twelve positive SINGLE values, whole-only transfer and
+  silent subunit capture; independent 1296-file /1656-witness qualification.
+
+- [Maintenance-chain composition audit](yt-maint/MAINTENANCE_COMPOSITION_AUDIT.md):
+  current complete Go/CLI profiles, distinct stock/gateway phase boundaries and
+  dependency-ordered gaps; next is evolved occupied-combat child economy.
+
+- [Bounded Go evolved occupied-combat planet economy](yt-maint/GO_EVOLVED_OCCUPIED_PLANETS.md):
+  24 day-307/308 modeled phases, 78 planet updates and 234 eager draws; independent
+  retained 864-file /1242-child-witness qualification, with separate admission.
+
+- [Bounded Go evolved occupied-combat home/mobile continuation](yt-maint/GO_EVOLVED_OCCUPIED_MOBILE.md):
+  24 phases /465 routes /108 ground assaults, actual Go economy handoffs and nine
+  no-travel mine counter-cases; retained 864-file /1242-child-witness qualification.

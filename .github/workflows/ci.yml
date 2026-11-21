@@ -13,7 +13,8 @@ jobs:
   validate:
     name: Go tests, evidence and terminal smoke
     runs-on: ubuntu-24.04
-    timeout-minutes: 90
+    # Full retained evidence replay plus terminal/package checks exceeds 90 minutes.
+    timeout-minutes: 120
     defaults:
       run:
         working-directory: yankeetrader
@@ -277,6 +278,10 @@ jobs:
           python3 scripts/test_export_evolved_port_fixture.py
           python3 scripts/export_evolved_planet_fixture.py --check
           python3 scripts/test_export_evolved_planet_fixture.py
+          python3 scripts/export_evolved_occupied_planet_fixture.py --check
+          python3 scripts/test_export_evolved_occupied_planet_fixture.py
+          python3 scripts/export_evolved_occupied_mobile_fixture.py --check
+          python3 scripts/test_export_evolved_occupied_mobile_fixture.py
           python3 scripts/export_occupied_planet_fixture.py --check
           python3 scripts/test_export_occupied_planet_fixture.py
           python3 scripts/export_foreign_defense_fixture.py --check
@@ -285,6 +290,22 @@ jobs:
           python3 scripts/test_export_neutral_ground_fixture.py
           python3 scripts/export_occupied_routing_fixture.py --check
           python3 scripts/test_export_occupied_routing_fixture.py
+          python3 scripts/export_occupied_report_fixture.py --check
+          python3 scripts/test_export_occupied_report_fixture.py
+          python3 scripts/export_occupied_records_fixture.py --check
+          python3 scripts/test_export_occupied_records_fixture.py
+          python3 scripts/export_friendly_stock_fixture.py --check
+          python3 scripts/test_export_friendly_stock_fixture.py
+          python3 scripts/export_departed_stock_fixture.py --check
+          python3 scripts/test_export_departed_stock_fixture.py
+          python3 scripts/export_neutral_owner_stock_fixture.py --check
+          python3 scripts/test_export_neutral_owner_stock_fixture.py
+          python3 scripts/export_defender_stock_fixture.py --check
+          python3 scripts/test_export_defender_stock_fixture.py
+          python3 scripts/export_gateway_victory_fixture.py --check
+          python3 scripts/test_export_gateway_victory_fixture.py
+          python3 scripts/export_clear_gateway_stock_fixture.py --check
+          python3 scripts/test_export_clear_gateway_stock_fixture.py
           python3 scripts/export_evolved_continuation_fixture.py --check
           python3 scripts/test_export_evolved_continuation_fixture.py
           python3 scripts/export_evolved_tail_fixture.py --check
@@ -313,6 +334,7 @@ jobs:
           python3 scripts/test_export_late_clock_fixture.py
           python3 scripts/test_export_replay_cli_recipes.py
           python3 scripts/test_chain_cli_recipes.py
+          python3 scripts/test_occupied_cli_recipes.py
           python3 scripts/smoke_replay_cli.py
           python3 scripts/verify_inline_add_double.py
           python3 scripts/test_verify_inline_add_double.py

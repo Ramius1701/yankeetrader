@@ -2588,11 +2588,12 @@ general maintenance and playable integration remain excluded; save 35 is unchang
 [Research replay CLI](research/yt-maint/REPLAY_CLI.md) now exposes
 `go run ./cmd/qbmaint-replay -recipe FILE -before DIR -source-root CHECKOUT -out NEWDIR`.
 Recipe v1 selects `initial` or `initial-wanderer`; v2 separately selects
-`convergence-three-day`. Both preserve raw SINGLE clock hex and check all three
+`convergence-three-day`; v3 selects `occupied-day306`. All preserve raw SINGLE clock hex and check all three
 before-file hashes plus declared source
 hashes against the original YTMAINT identity. Unknown/duplicate/missing fields,
 profile mismatches and changed inputs fail before publication. V1 publishes six
-DOS files and a receipt; v2 publishes three day directories and one receipt under
+DOS files and a receipt; v2 publishes three day directories, and v3 publishes six
+occupied-world files with a faction/combat receipt under
 `NEWDIR/replay/`. Existing
 paths and output inside input/source trees are refused. The adapter reuses all
 32 existing fixtures /192 complete native outputs; no captures were added.
@@ -2733,8 +2734,9 @@ and 1872 RNG witnesses. Native targets and captured endpoints never correct
 synthesis, and no captures or historical source hashes changed. Tests cover
 fractional production, wider ground flooring, raw-zero timestamps, owned storage,
 exact write bounds and atomic profile refusals. Earlier convergence APIs and
-CLI profiles stay strict; combat/routing and complete occupied-world Go output
-remain next, with modern gameplay, save 35 and release packages unchanged.
+CLI profiles stay strict; occupied combat/routing, complete six-file Go output
+and its separate CLI profile are now implemented below. Modern gameplay, save 35
+and release packages are unchanged.
 
 ### Bounded Go foreign-defense combat
 
@@ -2765,10 +2767,8 @@ warehouse stocks, owner and placement remain untouched. Inputs are immutable,
 outputs owned and unsupported contexts fail without partial results. The exporter
 separately revalidates 1080 native files and 1872 RNG witnesses without changing
 observations or acquiring new captures. Tests and CI distinguish modeled phase
-receipts from native whole-run qualification. Next is bounded occupied-world
-routing/shared-pursuit integration with both combat primitives, then casualty
-news/scores and complete six-file output. Existing research CLI profiles, modern
-gameplay, save 35 and release packages are unchanged.
+receipts from native whole-run qualification. Occupied routing/shared-pursuit,
+casualty news/scores and complete six-file output are now implemented below. Existing research CLI profiles, modern gameplay, save 35 and release packages are unchanged.
 
 ### Bounded Go occupied-world home/mobile routing
 
@@ -2783,7 +2783,253 @@ scans and clear their pointers. Physical defense and moving-group conservation
 remain distinct, including neutral force retained during deposition. The exporter
 separately revalidates 1080 native files and 1872 RNG witnesses without new
 captures, endpoint correction or changed native hashes. Input isolation, owned
-outputs, strict historical gates and atomic late failures are tested. Next are
-casualty-dependent news/scores, downstream tail composition and complete occupied
-six-file Go output. Existing research CLI profiles, gameplay, save 35 and release
+outputs, strict historical gates and atomic late failures are tested. Casualty
+news/scores, tail composition and complete occupied six-file output are now
+implemented below. Existing research CLI profiles, gameplay, save 35 and release
 packages are unchanged.
+
+### Bounded Go casualty-dependent news and faction scoring
+
+[Occupied casualty reports](research/yt-maint/GO_OCCUPIED_REPORTS.md) now generate
+the five auxiliary files from original before files, a modeled finalized world
+and source-ordered Go combat receipts. All 30 complete five-file sets match the
+existing native-qualified Python outputs; tests also feed actual Go port,
+economy and routing events directly into the writer. Physical faction counts,
+capped casualties, raw public damage counters and neutral unscored forces remain
+distinct. The original misleading `Plyr`/`Xannor` suffixes, event order, comma/
+percentage widths, raw journal rotation and separate text clocks are preserved.
+Exact rational percentage rounding rejects unqualified halfway cases. Exporter
+checks independently revalidate 1080 native files and 1872 RNG witnesses without
+new captures or altered native hashes. Tests cover corruption, atomic refusals,
+owned outputs, DOS CRLF/EOF and unsupported numeric formatting. The finalized
+world comes from the Python fixture in this report-only API test; the separate
+occupied composition below now derives Go tail, metadata and all six files. Existing
+CLI profiles, gameplay, save 35 and release packages are unchanged.
+
+### Bounded Go occupied-world six-file composition
+
+`qbmaint.ReplayOccupiedFiles` now composes the existing capped ports, ordinary
+planet economy, home/mobile combat, Mercenary/desertion and lottery tail, final
+watermark/inactive ranks, and casualty reports from the original three before
+files and explicit startup/source clocks. It derives intermediate worlds, RNG
+states and events internally. Ten pinned before worlds and original side files,
+day-306 clocks and qualified phase admissions bound this research-only API;
+unsupported contexts and late failures publish no files or partial receipt.
+
+All 30 complete six-file sets match existing before-only Python replay, including
+120 combat events, three surviving-Mercenary activations and conditional lottery
+helpers. Existing captures independently qualify 1080 files and 1872 RNG
+witnesses; no native observations were repeated or changed. Tests cover source
+RNG continuation, mutable descending scans, final metadata, ownership and late
+atomic refusal. [Composition details](research/yt-maint/GO_OCCUPIED_RECORDS.md).
+The [occupied research CLI v3](research/yt-maint/REPLAY_CLI.md#occupied-day-306-profile-v3)
+now exposes this API; production maintenance,
+modern saves and release artifacts are unchanged.
+
+### Occupied-world research recipe and CLI
+
+`qbmaint-replay` now accepts the separate `qbmaint-replay-v3` /
+`occupied-day306` recipe. It checks original before/source identities and explicit
+startup, economy, home/mobile, tail and report clocks, then publishes the six
+calculated DOS files plus a v3 receipt in a fresh `OUT/replay/` directory. The
+receipt includes modeled RNG continuation, combat-event counts, faction scores
+and losses, Mercenary activations and lottery candidate. No intermediate world,
+event, endpoint state or expected target is accepted by the recipe.
+
+`python3 scripts/export_occupied_cli_recipes.py --out /tmp/yt-occupied-recipes`
+reuses existing fixtures for all 30 measured case/observation recipes and their
+three original before files. Comparison oracles stay separate and are ignored
+by the CLI. End-to-end checks match all six files for every recipe, verify
+receipts, exclusive publication and input preservation, and refuse changed
+sources/before bytes, injected endpoints and invalid late helpers. See
+[research CLI usage](research/yt-maint/REPLAY_CLI.md#occupied-day-306-profile-v3).
+Historical v1/v2 profiles remain separate; this does not import DOS worlds into
+modern saves or select playable maintenance policy. Release packages are not
+republished by this milestone.
+
+### Bounded Go friendly-garrison and planet-stock pickup
+
+`qbmaint.ReplayFriendlyStockMercenary` now replays the retained held sector-3000
+garrison and incoming sector-2368 Mercenary phase from modeled pre-phase bytes,
+explicit RNG state and source-labelled target-helper clocks. It derives eager
+physical-defense draws, the earlier hold gate, the incoming activation, target
+rejection/BFS route and actual first gateway entry. Cached friendly force adds
+once before `qbmbf.IntSingle` stock conversion. The positive taking actor is the
+combined pre-stock force; empty/subunit stock clears silently. Gateway governor
+and unrelated bytes survive, with distinct source departure/stock-zero residues.
+
+All 24 modeled phase worlds/receipts across eight joint cases match the existing
+Python replay. Retained four-day synthesis independently matches 144 complete
+six-file comparisons /864 native files and 1104 child RNG witnesses; no captures
+or observation hashes changed. Tests cover raw stock/fractions, held-versus-
+departed gates, derived paths/reseeds, physical conservation, owned output,
+restricted writes and late atomic refusal. [Scope and validation](research/yt-maint/GO_FRIENDLY_STOCK.md).
+This phase ends before lottery/reports/final metadata; full four-day Go/CLI
+composition remains separate; departed-garrison behavior is implemented below.
+Existing research profiles, playable maintenance, save 35 and release packages are unchanged.
+
+### Bounded Go departed-garrison movement and same-scan activation
+
+`qbmaint.ReplayDepartedStockMercenary` now replays the retained local sector-3000
+hold/departure, incoming sector-2368 pickup and later lower-sector activations.
+It reads the changing physical records in descending source order and derives
+eager gates, helper reseeds, rejection candidates, BFS routes and entered prefixes.
+Departed local fighters remain separate from the pickup actor and can activate
+again later in the same scan. Capture depends on the actual entering physical
+force, even for a Mercenary-owned planet; governor bytes remain unchanged.
+
+All 24 modeled phases /66 activations match the existing Python replay, including
+18 later same-scan activations and the held counter-controls. Retained four-day
+qualification remains 144 six-file comparisons /864 native files and 1152 child
+RNG witnesses; no acquisition bytes or observation hashes changed. Tests cover
+complete worlds/receipts, separate physical totals and pickup actors, raw zeros,
+owned writes, unchanged historical guards and late failures after pickup.
+[Scope and validation](research/yt-maint/GO_DEPARTED_STOCK.md).
+The API ends before lottery/reports/final metadata; complete four-day Go/CLI
+composition, general encounters and production maintenance remain separate.
+
+The main CI validation job now has a 120-minute allowance after its 90-minute
+limit canceled an otherwise progressing retained-evidence run. The departure
+fixture checks passed before cancellation; all existing evidence, race/vet,
+terminal and release-package checks remain required and unchanged.
+
+### Bounded Go neutral-owner transfer and mine-before-stock pickup
+
+`qbmaint.ReplayNeutralOwnerStockMercenary` replays the retained six-case linked
+gateway phase from modeled pre-phase bytes and explicit source state/clocks.
+Neutral fighters do not activate as Mercenaries and transfer once at pickup;
+friendly merging and neutral transfer have separate receipts and conservation.
+The linked one-mine action reseeds helper2 /4aa4 and uses two shrinking draws,
+damaging only the incoming force before local fighters and whole stock are added.
+Spent mines use canonical subtraction zero, distinct from stock/departure zeros.
+
+All 18 modeled worlds /27 activation receipts match existing Python replay,
+including nine mine actions and the local departure/reactivation ending at 356.
+Independent retained qualification remains 108 six-file comparisons /648 native
+files and 855 child RNG witnesses; no captures or observation hashes changed.
+Tests verify whole worlds, helper/event order, incoming-only loss, neutral debit,
+actors/fractions/zeros, source-owned writes and late atomic failures. Historical
+held/departed profiles remain strict. [Scope and validation](research/yt-maint/GO_NEUTRAL_OWNER_STOCK.md).
+The API ends before lottery/reports/final metadata; full four-day Go composition,
+CLI admission and playable maintenance remain separate.
+
+### Bounded Go Mercenary fatal offense and surviving-stock continuation
+
+`qbmaint.ReplayDefenderStockMercenary` now models the retained four fatal
+Mercenary attacks and the next day's extinct-force scans from modeled pre-phase
+worlds, calculated state and explicit source target clocks. It derives eager
+physical/movement/combat draws, target rejection/BFS routes and every unit
+casualty; all admitted attackers are at most 37, so the generic 150-loss branch
+is excluded. Fatal first-hop combat leaves stock uncollected and preserves
+surviving Xannor ownership and stale group caches. An extinct scan consumes only
+its physical-field draws, preserves the entire world and never resurrects force.
+
+All 24 modeled phase worlds/receipts match the existing Python five-day replay.
+The next-day phase preserves upstream-grown stock 40/3, rather than admitting the
+whole-day before values 37/0 or growing stock twice. Retained independent
+qualification remains 144 six-file comparisons /864 native files and 1074 child
+RNG witnesses; no captures, observation hashes or frozen acquisition sources
+changed. Tests cover exact continuation, raw zeros, stock/governor preservation,
+ownership, late atomic failures and independently computed unqualified victory
+refusal. [Scope and validation](research/yt-maint/GO_DEFENDER_STOCK.md).
+This phase ends before lottery/reports/final metadata. Complete five-day Go/CLI
+composition, general large-force combat and playable maintenance remain separate.
+
+### Bounded Go victorious Mercenary gateway continuation
+
+`qbmaint.ReplayGatewayVictoryMercenary` now models the two retained guarded gateway
+profiles and next-day empty routes. It derives target/helper chronology, optional
+one-mine incoming damage, unit-round victory against 37 Xannor defenders, continued
+routing and later descending-scan activations. The entering negative owner selects
+combat: victory clears defense/owner canonically and continues to the next edge,
+without falling through into planet pickup. Stock 37/40, governor, ground and
+stale caches remain unchanged throughout this phase.
+
+All 12 modeled worlds /21 activation receipts match existing Python replay,
+including six victories and three mine actions. The selected profiles independently
+match 72 six-file comparisons /432 native files and 660 RNG witnesses; the separate
+full gateway audit still checks 1296 files /1962 witnesses. No observations,
+hashes or frozen acquisition sources changed. Tests cover complete routes,
+casualty/faction conservation, source zeros, ownership and late atomic refusal.
+[Scope and validation](research/yt-maint/GO_GATEWAY_VICTORY.md).
+This API ends before lottery/reports/final metadata. Positive stock conversion,
+other gateway outcomes, general batch combat and full five-day Go/CLI composition
+remain separate; no playable policy or save/release format changed.
+
+### Bounded Go clear-gateway positive stock conversion
+
+`qbmaint.ReplayClearGatewayStockMercenary` now derives the retained twelve positive
+SINGLE stock contexts from a modeled pre-Mercenary world and explicit RNG/helper
+clocks. The incoming 97337 force follows its calculated target/BFS route into the
+clear neutral Gateway Cache. Qualified `qbmbf.IntSingle` floors stock, the entire
+fractional field clears to source `00008000`, and only whole fighters transfer.
+Capture/taking receipt metadata keeps the entering force; subunit stock captures
+without a taking receipt. Governor, ground, caches and other fields stay intact.
+
+All 36 modeled worlds and activation/reseed/pickup receipts match Python. Retained
+independent qualification checks 216 six-file comparisons /1296 native files and
+1656 child RNG witnesses. Tests cover half/adjacent values, silent subunit cases,
+source zeros, conservation, ownership, atomic refusals and target-read/RNG-witness
+separation. No observations, hashes or frozen acquisition sources changed.
+[Scope and validation](research/yt-maint/GO_CLEAR_GATEWAY_STOCK.md).
+This phase ends before lottery/reports/final metadata. Full four-day Go composition,
+CLI selection, arbitrary stocks and playable maintenance remain separate; older
+joint garrison/stock and victory admission is unchanged.
+
+### Maintenance-chain composition audit
+
+The [composition audit](research/yt-maint/MAINTENANCE_COMPOSITION_AUDIT.md) checks
+merged main through #186 against the plan, source guards, Python chains and open
+PRs (none at the 2026-11-18 check). Initial/late-clock six-file replay, the
+three-day convergence chain and occupied day-306 composition/CLI already exist.
+Recent stock/gateway Go phases remain phase-only; their native-qualified Python
+chains do not establish complete four/five-day Go output.
+
+The first missing dependency identified was evolved occupied-combat planet economy
+on days 307/308, now implemented below. Corresponding mobile/tail/report continuation
+and its three-day parent remain. Later stock chains also need day-309/310 ports, gateway economy
+and routing, unimplemented gateway outcomes, once-only lottery, family-specific
+news/scores, internally chained Go files and then explicit CLI admission. Reuse
+existing captures, arithmetic and completed combat phases. Historical admissions,
+playable maintenance, save 35 and release formats are unchanged.
+
+### Bounded Go evolved occupied-combat planet economy
+
+`qbmaint.ReplayEvolvedOccupiedPlanets` now derives day-307/308 economy for the
+three named homes and optional neutral Route Haven from modeled bytes/state and
+ordered source clocks. Separate admission preserves both existing convergence
+and initial-occupied guards. The existing arithmetic kernel is reused after
+validation: fractional/capped elapsed time, stocks/rates, interest, ground,
+raw timestamps and three eager event draws retain source order.
+
+All 24 modeled phase worlds /78 planet updates /234 eager draws match the retained
+Python chains. Independent qualification remains 144 six-file comparisons /864
+native files and 1242 child RNG witnesses. Tests cover complete worlds/receipts,
+ownership, fractional/interest boundaries and late atomic event rejection;
+exporter controls enforce synthesis-before-targets and reject corruption/RNG
+oracle input. No captures, observation hashes or frozen sources changed.
+[Scope and validation](research/yt-maint/GO_EVOLVED_OCCUPIED_PLANETS.md).
+Matching evolved occupied-combat home/mobile continuation is now implemented
+below; tail, reports and the three-day parent remain. Full stock/gateway composition, CLI selection,
+playable maintenance, save 35 and release formats are unchanged.
+
+### Bounded Go evolved occupied-combat home/mobile continuation
+
+`qbmaint.ReplayEvolvedOccupiedHomeMobile` now derives the same four retained
+chains' day-307/308 home/cache/mobile phase from modeled economy bytes/state and
+explicit helper clocks. It normalizes loaded caches once, reallocates missing
+groups, moves Wanderer, updates Xannoron and derives routing, pursuit, fatal
+Route Haven assaults and physical deposition. Group20's mine increment requires
+actual travel. Existing peaceful and initial combat admissions remain strict;
+entered mine/foreign-defense or unqualified ground encounters fail atomically.
+
+All 24 modeled worlds, 465 route receipts and 108 ground assaults match Python,
+including actual Go economy handoffs and nine positive-force no-travel group20
+cases. Independent qualification remains 864 native files /1242 child RNG
+witnesses. Tests cover caches/groups, source zeros, casualty/state continuation,
+owned storage and early/late refusals. Five exporter controls protect provenance,
+target-read ordering and RNG independence; no captures or native hashes changed.
+[Scope and validation](research/yt-maint/GO_EVOLVED_OCCUPIED_MOBILE.md).
+Next are evolved occupied-combat tail/reports and the three-day parent, before
+stock/gateway full chains or new CLI admission. Playable maintenance and save 35
+remain unchanged.

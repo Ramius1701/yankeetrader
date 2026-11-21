@@ -4,10 +4,11 @@ Build a modern Go BBS door using godoors, grounded in the supplied original 3.6 
 
 <a id="current-work"></a>
 
-## Current implementation and next work — checked 2026-11-14
+## Current implementation and next work — checked 2026-11-18
 
 This section is the current planning baseline, checked against merged `main`
-through `394559ff` (including bounded maintenance replay PRs #151–155 and #158–163 and merged numeric PRs #117–138 and #140–150 and merged maintenance PRs #88, #90–94 and #97–116, cursor fix #95 and smoke evidence #96), including PRs [#73](https://github.com/robbiew/yankeetrader/pull/73)
+through `fa4c5968` after #186, including the later composition/stock phases audited below
+(earlier recovery includes bounded maintenance replay PRs #151–155 and #158–163 and merged numeric PRs #117–138 and #140–150 and merged maintenance PRs #88, #90–94 and #97–116, cursor fix #95 and smoke evidence #96), including PRs [#73](https://github.com/robbiew/yankeetrader/pull/73)
 (port rules/pricing), [#74](https://github.com/robbiew/yankeetrader/pull/74)
 (warp rules), [#75](https://github.com/robbiew/yankeetrader/pull/75)
 (raw RNG recovery), and [#76](https://github.com/robbiew/yankeetrader/pull/76)
@@ -317,10 +318,98 @@ match Python; actual Go port/economy handoffs and late atomic refusals are teste
 Independent existing-evidence qualification retains 1080 files /1872 witnesses.
 Historical convergence/initial gates remain strict; no captures were repeated.
 
-**Next: bounded occupied-world casualty news and faction scoring, then downstream
-Mercenary/lottery-tail composition, final metadata and complete six-file Go replay.
-Reuse the existing occupied Python rules/captures and qualified Go phases; do not
-repeat home/mobile routing, combat/economy primitives or convergence/CLI work.**
+[Bounded Go casualty news/faction scoring](yt-maint/GO_OCCUPIED_REPORTS.md)
+now qualifies all 30 five-file report sets from modeled finalized worlds and
+source-ordered combat events. Actual Go port/economy/routing receipts also feed
+the writer. Unique physical owners, capped losses, original misleading labels,
+exact percentage rounding, DOS formatting and raw side-file handling are covered.
+Independent whole-run qualification remains 1080 native files /1872 witnesses;
+no capture or source observation was repeated or changed.
+
+[Bounded Go occupied six-file composition](yt-maint/GO_OCCUPIED_RECORDS.md)
+now derives all intermediate worlds, RNG states and combat events from the
+original three before files and explicit startup/source clocks. The existing
+Mercenary/lottery tail and final metadata writer required composition, not a
+second primitive. All 30 six-file sets match Python, with independent retained
+1080-file/1872-witness native qualification and no new captures.
+
+The [occupied research recipe/CLI v3](yt-maint/REPLAY_CLI.md#occupied-day-306-profile-v3)
+now exposes the composed API through `occupied-day306`. Existing fixtures export
+30 standalone recipes with original before files; comparison oracles and modeled
+intermediate states remain outside command inputs. End-to-end tests compare all
+six outputs, source/recipe/before/output receipts, modeled phase results and fresh
+publication, with late failures publishing nothing. No historical v1/v2 admission
+was widened and no production policy or release changed.
+
+[Bounded Go friendly-garrison/stock pickup](yt-maint/GO_FRIENDLY_STOCK.md)
+now models the retained sector-3000 hold and sector-2368 arrival, eager physical
+rolls, source helper reseeds/BFS route, once-only friendly composition and positive
+SINGLE stock floor. All 24 modeled phase worlds/receipts match Python; existing
+four-day qualification remains 864 native files /1104 child RNG witnesses. No
+acquisition was repeated. It ends before lottery/reports/final metadata and does
+not widen historical tail or occupied recipe admission.
+
+[Bounded Go departed-garrison movement](yt-maint/GO_DEPARTED_STOCK.md)
+now derives the held/departure gates, mutable descending scan, incoming pickup
+and later local activations. All 24 modeled phase worlds /66 activation receipts
+match Python, with 18 later same-scan activations and independent retained
+864-file /1152-child-witness native qualification. Separate local physical force,
+cached pickup actor, capture/governor behavior and source zeros are preserved.
+The held-only API and historical tails retain their original strict admission.
+
+[Bounded Go neutral-owner/mine-stock phase](yt-maint/GO_NEUTRAL_OWNER_STOCK.md)
+now derives neutral transfer independently of friendly merging, linked count-two
+mine damage before local/stock addition, and complete mutable local scans. All
+18 modeled worlds /27 activations and nine mine receipts match Python, with
+retained 648-file /855-child-witness qualification. Original captures/hashes and
+historical friendly/departed admission remain unchanged.
+
+[Bounded Go fatal Mercenary offense and extinct stock continuation](yt-maint/GO_DEFENDER_STOCK.md)
+now models the four small-attacker defense contexts and both child phases. All
+24 modeled worlds/receipts match Python; physical/source helper/eager combat
+progression derives every casualty and the next scan cannot resurrect force.
+Post-economy stock 40/3 remains uncollected and raw departure/cache/governor bytes
+survive. Independent qualification remains 864 native files /1074 child witnesses;
+no new acquisition was needed. Victorious or large-force combat remains refused.
+
+[Bounded Go victorious gateway continuation](yt-maint/GO_GATEWAY_VICTORY.md)
+now models the two guarded profiles and next-day empty routes: 12 modeled worlds,
+21 activations, six unit victories and three mine actions match Python. Victory
+continues routing rather than taking stock on that encounter. Selected native
+qualification remains 432 files /660 witnesses, separately from the wider gateway
+1296-file /1962-witness audit; no acquisition was repeated. Fatal-only admission
+and unrelated stock/friendly/neutral/defender profiles remain strict.
+
+[Bounded Go clear-gateway positive stock conversion](yt-maint/GO_CLEAR_GATEWAY_STOCK.md)
+now derives all twelve existing rational contexts: 36 modeled worlds and receipts,
+whole-only transfer, full source stock clear and silent subunit capture. It reuses
+qualified raw SINGLE INT and retained Python replay with independent 1296-file /
+1656-child-witness qualification. Historical joint-profile admission stays strict.
+
+The [full maintenance-chain composition audit](yt-maint/MAINTENANCE_COMPOSITION_AUDIT.md)
+checks merged main through #186 and the live open-PR collection (empty on
+2026-11-18). Initial, late-clock, convergence-three-day and occupied-day306 Go/CLI
+composition already exists; do not repeat it. New Mercenary phases still lack
+the distinct evolved occupied-combat parent, day-309/310 economy/home routing,
+post-phase lottery, family-specific reports and transactional child composition.
+
+[Bounded Go evolved occupied-combat planet economy](yt-maint/GO_EVOLVED_OCCUPIED_PLANETS.md)
+now implements that first dependency for days 307/308: 24 modeled phases, 78
+planet updates and 234 eager draws match the retained four Python chains. Separate
+admission reuses the qualified arithmetic kernel without widening convergence or
+initial-occupied profiles. Existing 864-file /1242-child-witness qualification is
+revalidated, not reacquired; source/capture hashes remain unchanged.
+
+[Bounded Go evolved occupied-combat home/mobile continuation](yt-maint/GO_EVOLVED_OCCUPIED_MOBILE.md)
+now derives 24 modeled phases /465 routes /108 Route Haven ground assaults and
+joins actual Go economy output/state. Cache normalization, casualty-reduced
+allocation, source pursuit/scans, deposition and nine no-travel mine counter-cases
+match retained Python. The 864-file /1242-child-witness qualification remains
+independent; no captures or old combat admission changed.
+
+**Next: bounded Go evolved occupied-combat Mercenary/lottery tail and auxiliary
+reports using those same four retained chains. Then compose the three-day Go
+parent before later gateway/stock children; retain strict old phase/recipe guards.**
 Encounter/interception actions, complete maintenance and production integration
 remain separate. Do not repeat completed
 SINGLE/DOUBLE arithmetic or integer conversions. General error/unwind behavior,
