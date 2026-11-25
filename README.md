@@ -3050,6 +3050,47 @@ through tail and metadata into all five byte-exact reports, and cover owned
 storage and early/late atomic refusals. Five exporter controls revalidate existing
 864-file /1242-child-witness qualification without changing native evidence.
 [Scope and validation](research/yt-maint/GO_EVOLVED_OCCUPIED_TAIL_REPORTS.md).
-Next is the complete three-day Go parent using only its own day outputs, then
-explicit recipe/CLI admission. Phase fixtures do not establish a full Go chain;
+The complete three-day Go parent is now implemented below; explicit recipe/CLI
+admission remains separate. Phase fixtures alone do not establish a full Go chain;
 playable maintenance, save 35 and release formats are unchanged.
+
+### Complete bounded Go evolved occupied-combat three-day chain
+
+`qbmaint.ReplayEvolvedOccupiedChain` now composes the four retained occupied-combat
+profiles across days 306–308 from pinned original files and explicit clocks.
+It reuses existing occupied-day306 and child port/economy/mobile/tail/metadata/
+report APIs. Only each day's own Go six-file output feeds the next day; startup
+seeds remain independent per DOS process while state continues within each day.
+Late failures return no partial bundles, and all outputs own their storage.
+
+All 12 source recipes /36 six-file Go results match retained Python hashes,
+including calculated state handoffs and previous-news rotation. Independent
+child qualification remains 864 files /1242 RNG witnesses; parent qualification
+is reused from occupied-day306. Tests cover original pins, cross-day ownership,
+calendars, creation guards and last-day failures. Five exporter controls retain
+source/clock provenance and synthesis-before-target/RNG-independence boundaries.
+No native captures, observation hashes or old profile admission changed.
+[Scope and validation](research/yt-maint/GO_EVOLVED_OCCUPIED_CHAIN.md).
+The separate research recipe/CLI profile is now implemented below;
+stock/gateway full chains, playable policy, save 35 and release formats remain
+separate.
+
+### Research recipe/CLI v4: evolved occupied-combat chain
+
+`qbmaint-replay-v4` now selects `evolved-occupied-three-day` through the existing
+checkout-only `qbmaint-replay` command. It admits four qualified original worlds
+and derives the exact initial/child planet clock inventory from the original
+hash. Source clocks, explicit raw zeros and independent daily startup seeds are
+preserved; child snapshots, endpoints and output oracles are rejected. Existing
+v1–v3 schemas and phase admissions stay strict.
+
+The exporter reuses existing fixtures for 12 recipes. Compiled CLI tests match
+all 36 six-file results /216 output files and receipt states/draws, proving oracle
+independence, journal rotation, before-file preservation, output reuse refusal
+and no publication on late failures. Three fresh day directories and one v4
+receipt share the existing atomic publication path; source hashes bind declared
+provenance, not a new native endpoint attestation. README/plan, research usage and
+sysop cheat sheet now describe the profile. [Usage and validation](research/yt-maint/REPLAY_CLI.md#evolved-occupied-combat-three-day-profile-v4).
+No captures, native hashes, modern-save policy or release packages changed.
+Next is bounded Go survivor/gateway port economy for days 309/310, reusing
+retained captures and Python rules before extending later stock/gateway chains.

@@ -139,5 +139,7 @@ now completes the first queued phase using those existing captures and Python
 chains. The audit's main snapshot and open-PR observation above describe its
 original inspection point. Evolved occupied-combat [home/mobile continuation](GO_EVOLVED_OCCUPIED_MOBILE.md)
 is now implemented too. The [Mercenary/lottery tail and reports](GO_EVOLVED_OCCUPIED_TAIL_REPORTS.md) are
-now implemented too. Next compose the full original-input three-day Go parent;
-do not repeat these phases or the existing initial/convergence compositions.
+now implemented too. The [full original-input three-day Go parent](GO_EVOLVED_OCCUPIED_CHAIN.md) is
+now implemented. Its separate [research recipe/CLI v4](REPLAY_CLI.md#evolved-occupied-combat-three-day-profile-v4)
+is now implemented as well. Next is day-309/310 survivor/gateway port economy
+using retained rules/captures; do not repeat these phases/chains/CLI profiles.

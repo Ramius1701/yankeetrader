@@ -227,3 +227,11 @@ Next compose the downstream tail/final metadata and complete occupied Go outputs
 - [Bounded Go evolved occupied-combat tail/reports](yt-maint/GO_EVOLVED_OCCUPIED_TAIL_REPORTS.md):
   24 phase/report sets, selected unit victory, once-only lottery and source/public
   faction ledger; retained 864-file /1242-child-witness qualification.
+
+- [Complete Go evolved occupied-combat chain](yt-maint/GO_EVOLVED_OCCUPIED_CHAIN.md):
+  12 original-input recipes /36 six-file results, own-day handoffs and atomic
+  late failure; retained child 864-file /1242-witness qualification remains distinct.
+
+- [Evolved occupied-combat recipe/CLI v4](yt-maint/REPLAY_CLI.md#evolved-occupied-combat-three-day-profile-v4):
+  12 clock-only recipes, compiled 36 six-file results, strict original/layout
+  admission and existing atomic publication; sysop research usage updated.
